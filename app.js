@@ -20,6 +20,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     
     // Close mobile menu
     sidebar.classList.remove('open');
+    menuToggle.classList.remove('open');
   });
 });
 
@@ -40,6 +41,7 @@ function navigateTo(page) {
 // Mobile menu toggle
 menuToggle.addEventListener('click', () => {
   sidebar.classList.toggle('open');
+  menuToggle.classList.toggle('open');
 });
 
 // Close sidebar when clicking outside on mobile
@@ -47,13 +49,49 @@ document.addEventListener('click', (e) => {
   if (window.innerWidth <= 768) {
     if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
       sidebar.classList.remove('open');
+      menuToggle.classList.remove('open');
     }
   }
 });
 
+// Function to remove Greek accents for search
+function removeGreekAccents(text) {
+  const accentMap = {
+    'ά': 'α', 'έ': 'ε', 'ή': 'η', 'ί': 'ι', 'ό': 'ο', 'ύ': 'υ', 'ώ': 'ω',
+    'Ά': 'Α', 'Έ': 'Ε', 'Ή': 'Η', 'Ί': 'Ι', 'Ό': 'Ο', 'Ύ': 'Υ', 'Ώ': 'Ω',
+    'ΐ': 'ι', 'ΰ': 'υ', 'ϊ': 'ι', 'ϋ': 'υ', 'ΐ': 'ι', 'ΰ': 'υ'
+  };
+  return text.split('').map(char => accentMap[char] || char).join('');
+}
+
+// Function to convert Greek to Latin transliteration for search
+function greekToLatin(text) {
+  text = removeGreekAccents(text.toLowerCase());
+  
+  // Handle two-letter combinations first
+  text = text.replace(/θ/g, 'th')
+           .replace(/χ/g, 'ch')
+           .replace(/ψ/g, 'ps')
+           .replace(/ου/g, 'ou')
+           .replace(/αι/g, 'ai')
+           .replace(/ει/g, 'ei')
+           .replace(/οι/g, 'oi');
+  
+  // Single letter mappings
+  const latinMap = {
+    'α': 'a', 'β': 'v', 'γ': 'g', 'δ': 'd', 'ε': 'e', 'ζ': 'z',
+    'η': 'i', 'ι': 'i', 'κ': 'k', 'λ': 'l', 'μ': 'm', 'ν': 'n',
+    'ξ': 'x', 'ο': 'o', 'π': 'p', 'ρ': 'r', 'σ': 's', 'ς': 's',
+    'τ': 't', 'υ': 'y', 'φ': 'f', 'ω': 'o'
+  };
+  
+  return text.split('').map(char => latinMap[char] || char).join('');
+}
+
 // Search functionality
 input.addEventListener("input", () => {
   const query = input.value.trim().toLowerCase();
+  const queryNoAccents = removeGreekAccents(query);
   suggestions.innerHTML = "";
   
   if (query.length === 0) {
@@ -61,7 +99,22 @@ input.addEventListener("input", () => {
     return;
   }
   
-  const matches = verbList.filter(v => v.startsWith(query));
+  // Check if input is Latin characters (not Greek)
+  const isLatinInput = /^[a-z]+$/.test(query);
+  
+  // Match verbs with or without accents, or via Latin transliteration
+  const matches = verbList.filter(v => {
+    const verbNoAccents = removeGreekAccents(v.toLowerCase());
+    
+    if (isLatinInput) {
+      // Convert Greek verb to Latin and compare
+      const verbLatin = greekToLatin(v);
+      return verbLatin.startsWith(query);
+    } else {
+      // Greek input - match with or without accents
+      return verbNoAccents.startsWith(queryNoAccents);
+    }
+  });
   
   matches.slice(0, 5).forEach(verb => {
     const div = document.createElement("div");
@@ -75,10 +128,25 @@ input.addEventListener("input", () => {
     suggestions.appendChild(div);
   });
   
+  // Try exact match with or without accents
   if (verbs[query]) {
     showVerb(query);
   } else {
-    result.innerHTML = "";
+    let exactMatch;
+    
+    if (isLatinInput) {
+      // Find verb that matches Latin transliteration
+      exactMatch = verbList.find(v => greekToLatin(v) === query);
+    } else {
+      // Find verb that matches without accents
+      exactMatch = verbList.find(v => removeGreekAccents(v.toLowerCase()) === queryNoAccents);
+    }
+    
+    if (exactMatch) {
+      showVerb(exactMatch);
+    } else {
+      result.innerHTML = "";
+    }
   }
 });
 
