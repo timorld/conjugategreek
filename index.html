@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conjugate Greek Verbs Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  
+  <!-- Side Navigation -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Conjugate Greek</h2>
+      <span>Ελληνικά Ρήματα</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" data-page="search" class="active">🔍 Search Verbs</a></li>
+      <li><a href="#" data-page="alphabetical">📖 All Verbs A-Z</a></li>
+      <li><a href="#" data-page="essential">⭐ 100 Essential Verbs</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Search Page -->
+    <div class="page active" id="page-search">
+      <div class="container">
+        <h1>Greek Verb Conjugator</h1>
+        <p class="subtitle">Type a Greek verb to see its conjugations</p>
+        
+        <div class="search-container">
+          <input
+            id="verbInput"
+            type="text"
+            placeholder="π.χ. είμαι, έχω, θέλω..."
+            autocomplete="off"
+          />
+          <div id="suggestions"></div>
+        </div>
+
+        <div id="result"></div>
+      </div>
+    </div>
+
+    <!-- Alphabetical List Page -->
+    <div class="page" id="page-alphabetical">
+      <div class="container wide">
+        <h1>All Verbs A-Z</h1>
+        <p class="subtitle">Complete alphabetical list of available verbs</p>
+        <div id="alphabetical-list"></div>
+      </div>
+    </div>
+
+    <!-- Essential Verbs Page -->
+    <div class="page" id="page-essential">
+      <div class="container wide">
+        <h1>100 Essential Greek Verbs</h1>
+        <p class="subtitle">The most important verbs to learn in Greek</p>
+        <div id="essential-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="verbs-data.js"></script>
+  <script src="verbs-extra-1.js"></script>
+  <script src="verbs-extra-2.js"></script>
+  <script src="verbs-extra-3.js"></script>
+  <script src="verbs-extra-4.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
