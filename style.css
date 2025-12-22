@@ -556,6 +556,7 @@ td:last-child {
   
   .sidebar-footer {
     padding: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 60px));
   }
   
   .coffee-button {
