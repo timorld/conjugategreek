@@ -146,6 +146,29 @@ function greekToLatin(text) {
   return text.split('').map(char => latinMap[char] || char).join('');
 }
 
+// Build reverse lookup: conjugated form -> infinitive verb
+const conjugatedLookup = {};
+verbList.forEach(infinitive => {
+  const verbData = verbs[infinitive];
+  // Loop through all tenses
+  for (const tense in verbData) {
+    if (tense === "meaning") continue;
+    // Loop through all persons in each tense
+    for (const person in verbData[tense]) {
+      const conjugatedForm = verbData[tense][person];
+      // Map this conjugated form to its infinitive (store without accents)
+      if (conjugatedForm && conjugatedForm.trim()) {
+        const formNoAccents = removeGreekAccents(conjugatedForm.toLowerCase());
+        conjugatedLookup[formNoAccents] = infinitive;
+        
+        // Also create Latin transliteration lookup
+        const formLatin = greekToLatin(conjugatedForm);
+        conjugatedLookup[formLatin] = infinitive;
+      }
+    }
+  }
+});
+
 // Search functionality
 input.addEventListener("input", () => {
   const query = input.value.trim().toLowerCase();
@@ -203,16 +226,51 @@ input.addEventListener("input", () => {
     if (exactMatch) {
       showVerb(exactMatch);
     } else {
-      result.innerHTML = "";
+      // Check if it's a conjugated form (works for both Greek and Latin)
+      const lookupKey = isLatinInput ? query : queryNoAccents;
+      const infinitive = conjugatedLookup[lookupKey];
+      if (infinitive) {
+        showVerb(infinitive, query);
+      } else {
+        result.innerHTML = "";
+      }
     }
   }
 });
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    const verb = input.value.trim();
+    const query = input.value.trim();
+    const queryLower = query.toLowerCase();
+    const queryNoAccents = removeGreekAccents(queryLower);
+    const isLatinInput = /^[a-z]+$/.test(queryLower);
     suggestions.innerHTML = "";
-    showVerb(verb);
+    
+    // Try direct match first
+    if (verbs[query]) {
+      showVerb(query);
+    } else {
+      // Check if it's infinitive without accents or Latin
+      let exactMatch;
+      if (isLatinInput) {
+        exactMatch = verbList.find(v => greekToLatin(v) === queryLower);
+      } else {
+        exactMatch = verbList.find(v => removeGreekAccents(v.toLowerCase()) === queryNoAccents);
+      }
+      
+      if (exactMatch) {
+        showVerb(exactMatch);
+      } else {
+        // Check if it's a conjugated form (works for both Greek and Latin)
+        const lookupKey = isLatinInput ? queryLower : queryNoAccents;
+        const infinitive = conjugatedLookup[lookupKey];
+        if (infinitive) {
+          showVerb(infinitive, query);
+        } else {
+          showVerb(query); // Will show "not found" message
+        }
+      }
+    }
   }
 });
 
@@ -231,7 +289,7 @@ const tenseClasses = {
   "Παρατατικός (Imperfect Past)": "tense-imperfect"
 };
 
-function showVerb(verb) {
+function showVerb(verb, searchedConjugation = null) {
   result.innerHTML = "";
 
   if (!verbs[verb]) {
@@ -240,6 +298,14 @@ function showVerb(verb) {
   }
 
   const data = verbs[verb];
+
+  // Show helpful message if user searched for a conjugated form
+  if (searchedConjugation) {
+    const notice = document.createElement("div");
+    notice.className = "conjugation-notice";
+    notice.innerHTML = `<span class="notice-icon">ℹ️</span> You searched for "<strong>${searchedConjugation}</strong>" — showing infinitive: <strong>${verb}</strong>`;
+    result.appendChild(notice);
+  }
 
   const header = document.createElement("div");
   header.className = "verb-header";
