@@ -1,3 +1,6 @@
+/* Import Google Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -8,6 +11,17 @@ body {
   background: #f5f7fa;
   min-height: 100vh;
   display: flex;
+}
+
+/* Apply Google Sans to Greek text elements */
+.sidebar-header span,
+.verb-header h2,
+td:last-child,
+.verb-card .verb-name,
+.essential-card .verb-name,
+input[type="text"],
+.suggestion {
+  font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* Sidebar Navigation */
