@@ -50,6 +50,7 @@ function navigateTo(page, saveHistory = true) {
   // Initialize page content
   if (page === 'alphabetical') renderAlphabeticalList();
   if (page === 'essential') renderEssentialList();
+  if (page === 'flashcards') initFlashcards();
   
   // Hide back button when navigating via menu
   if (saveHistory) {
@@ -443,3 +444,177 @@ function selectVerb(verb) {
   // Scroll to top on mobile
   window.scrollTo(0, 0);
 }
+
+// =====================================================
+// FLASH CARDS
+// =====================================================
+
+let flashcardState = {
+  cards: [],
+  currentIndex: 0,
+  correct: 0,
+  wrong: 0,
+  completed: false
+};
+
+function initFlashcards() {
+  // Reset state
+  flashcardState = {
+    cards: [],
+    currentIndex: 0,
+    correct: 0,
+    wrong: 0,
+    completed: false
+  };
+  
+  // Get 20 random verbs from available verbs
+  const availableVerbs = verbList.filter(v => verbs[v] !== undefined);
+  const shuffled = [...availableVerbs].sort(() => Math.random() - 0.5);
+  flashcardState.cards = shuffled.slice(0, 20);
+  
+  renderFlashcards();
+  updateFlashcardStats();
+  updateFlashcardProgress();
+}
+
+function renderFlashcards() {
+  const track = document.getElementById('flashcardTrack');
+  if (!track) return;
+  
+  track.innerHTML = flashcardState.cards.map((verb, index) => `
+    <div class="flashcard" data-index="${index}">
+      <div class="flashcard-inner">
+        <div class="flashcard-face flashcard-front" onclick="flipCard(${index})">
+          <div class="flashcard-verb">${verb}</div>
+          <div class="flashcard-hint">What does this mean?</div>
+          <div class="flashcard-tap">Tap to reveal</div>
+        </div>
+        <div class="flashcard-face flashcard-back" onclick="flipCard(${index})">
+          <div class="flashcard-meaning">${verbs[verb].meaning}</div>
+          <div class="flashcard-tap">Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  
+  // Reset position
+  track.style.transform = 'translateX(0)';
+}
+
+function flipCard(index) {
+  const cards = document.querySelectorAll('.flashcard');
+  if (cards[index]) {
+    cards[index].classList.toggle('flipped');
+  }
+}
+
+function goToCard(index) {
+  const track = document.getElementById('flashcardTrack');
+  if (!track) return;
+  
+  flashcardState.currentIndex = index;
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function markCard(isCorrect) {
+  if (flashcardState.completed) return;
+  
+  const currentCard = document.querySelectorAll('.flashcard')[flashcardState.currentIndex];
+  
+  if (isCorrect) {
+    flashcardState.correct++;
+    currentCard?.classList.add('swipe-right');
+  } else {
+    flashcardState.wrong++;
+    currentCard?.classList.add('swipe-left');
+  }
+  
+  updateFlashcardStats();
+  updateFlashcardProgress();
+  
+  // Move to next card after animation
+  setTimeout(() => {
+    if (flashcardState.currentIndex < flashcardState.cards.length - 1) {
+      flashcardState.currentIndex++;
+      goToCard(flashcardState.currentIndex);
+    } else {
+      // All cards completed
+      showFlashcardComplete();
+    }
+  }, 300);
+}
+
+function updateFlashcardStats() {
+  const correctEl = document.getElementById('correctCount');
+  const wrongEl = document.getElementById('wrongCount');
+  const remainingEl = document.getElementById('remainingCount');
+  
+  if (correctEl) correctEl.textContent = flashcardState.correct;
+  if (wrongEl) wrongEl.textContent = flashcardState.wrong;
+  if (remainingEl) {
+    const remaining = flashcardState.cards.length - flashcardState.correct - flashcardState.wrong;
+    remainingEl.textContent = remaining;
+  }
+}
+
+function updateFlashcardProgress() {
+  const progressBar = document.getElementById('progressBar');
+  if (!progressBar) return;
+  
+  const total = flashcardState.cards.length;
+  const completed = flashcardState.correct + flashcardState.wrong;
+  const percentage = (completed / total) * 100;
+  progressBar.style.width = `${percentage}%`;
+}
+
+function showFlashcardComplete() {
+  flashcardState.completed = true;
+  
+  const track = document.getElementById('flashcardTrack');
+  if (!track) return;
+  
+  const percentage = Math.round((flashcardState.correct / flashcardState.cards.length) * 100);
+  let emoji = '🎉';
+  let message = 'Great job!';
+  
+  if (percentage === 100) {
+    emoji = '🏆';
+    message = 'Perfect Score!';
+  } else if (percentage >= 80) {
+    emoji = '🌟';
+    message = 'Excellent!';
+  } else if (percentage >= 60) {
+    emoji = '👍';
+    message = 'Good work!';
+  } else if (percentage < 40) {
+    emoji = '💪';
+    message = 'Keep practicing!';
+  }
+  
+  track.innerHTML = `
+    <div class="flashcard" style="flex: 0 0 100%; min-width: 100%;">
+      <div class="flashcard-complete">
+        <div class="emoji">${emoji}</div>
+        <h2>${message}</h2>
+        <div class="score">
+          You got <strong>${flashcardState.correct}</strong> out of <strong>${flashcardState.cards.length}</strong> correct
+          <br>(${percentage}%)
+        </div>
+      </div>
+    </div>
+  `;
+  track.style.transform = 'translateX(0)';
+}
+
+// Flash card button event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const btnCorrect = document.getElementById('btnCorrect');
+  const btnWrong = document.getElementById('btnWrong');
+  const btnFlip = document.getElementById('btnFlip');
+  const btnRestart = document.getElementById('btnRestart');
+  
+  if (btnCorrect) btnCorrect.addEventListener('click', () => markCard(true));
+  if (btnWrong) btnWrong.addEventListener('click', () => markCard(false));
+  if (btnFlip) btnFlip.addEventListener('click', () => flipCard(flashcardState.currentIndex));
+  if (btnRestart) btnRestart.addEventListener('click', initFlashcards);
+});
