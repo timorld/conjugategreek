@@ -451,26 +451,47 @@ function selectVerb(verb) {
 
 let flashcardState = {
   cards: [],
+  missedCards: [],
   currentIndex: 0,
   correct: 0,
   wrong: 0,
-  completed: false
+  completed: false,
+  isPracticeMode: false
 };
 
 function initFlashcards() {
   // Reset state
   flashcardState = {
     cards: [],
+    missedCards: [],
     currentIndex: 0,
     correct: 0,
     wrong: 0,
-    completed: false
+    completed: false,
+    isPracticeMode: false
   };
   
   // Get 20 random verbs from available verbs
   const availableVerbs = verbList.filter(v => verbs[v] !== undefined);
   const shuffled = [...availableVerbs].sort(() => Math.random() - 0.5);
   flashcardState.cards = shuffled.slice(0, 20);
+  
+  renderFlashcards();
+  updateFlashcardStats();
+  updateFlashcardProgress();
+}
+
+function practiceMissedCards() {
+  if (flashcardState.missedCards.length === 0) return;
+  
+  // Set up practice mode with missed cards
+  flashcardState.cards = [...flashcardState.missedCards];
+  flashcardState.missedCards = [];
+  flashcardState.currentIndex = 0;
+  flashcardState.correct = 0;
+  flashcardState.wrong = 0;
+  flashcardState.completed = false;
+  flashcardState.isPracticeMode = true;
   
   renderFlashcards();
   updateFlashcardStats();
@@ -520,12 +541,14 @@ function markCard(isCorrect) {
   if (flashcardState.completed) return;
   
   const currentCard = document.querySelectorAll('.flashcard')[flashcardState.currentIndex];
+  const currentVerb = flashcardState.cards[flashcardState.currentIndex];
   
   if (isCorrect) {
     flashcardState.correct++;
     currentCard?.classList.add('swipe-right');
   } else {
     flashcardState.wrong++;
+    flashcardState.missedCards.push(currentVerb); // Track missed card
     currentCard?.classList.add('swipe-left');
   }
   
@@ -591,6 +614,28 @@ function showFlashcardComplete() {
     message = 'Keep practicing!';
   }
   
+  // Build practice missed button if there are missed cards
+  let practiceButton = '';
+  if (flashcardState.missedCards.length > 0) {
+    practiceButton = `
+      <button class="fc-practice-missed" onclick="practiceMissedCards()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 2v6h-6"></path>
+          <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+          <path d="M3 22v-6h6"></path>
+          <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+        </svg>
+        Practice ${flashcardState.missedCards.length} Missed Card${flashcardState.missedCards.length > 1 ? 's' : ''}
+      </button>
+    `;
+  }
+  
+  // Show different message if this was practice mode and they got 100%
+  let celebrationMessage = '';
+  if (flashcardState.isPracticeMode && percentage === 100) {
+    celebrationMessage = `<div class="mastery-message">🎊 You've mastered all the cards! 🎊</div>`;
+  }
+  
   track.innerHTML = `
     <div class="flashcard" style="flex: 0 0 100%; min-width: 100%;">
       <div class="flashcard-complete">
@@ -600,6 +645,8 @@ function showFlashcardComplete() {
           You got <strong>${flashcardState.correct}</strong> out of <strong>${flashcardState.cards.length}</strong> correct
           <br>(${percentage}%)
         </div>
+        ${celebrationMessage}
+        ${practiceButton}
       </div>
     </div>
   `;
