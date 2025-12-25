@@ -1,5 +1,7 @@
 // Merge all extra verb data into main verbs object
 Object.assign(verbs, verbsExtra1, verbsExtra2, verbsExtra3, verbsExtra4);
+// Merge newly extracted verbs (600 verbs from the book)
+Object.assign(verbs, verbs_new, verbs_new_new_1, verbs_new_new_2, verbs_new_new_3);
 
 // Get all verb names for autocomplete
 const verbList = Object.keys(verbs);
