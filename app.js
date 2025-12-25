@@ -6,6 +6,20 @@ Object.assign(verbs, verbs_new, verbs_new_new_1, verbs_new_new_2, verbs_new_new_
 // Get all verb names for autocomplete
 const verbList = Object.keys(verbs);
 
+// Most common Greek verbs to show when clicking empty search
+const commonVerbs = [
+  'είμαι',    // to be
+  'έχω',      // to have
+  'κάνω',     // to do/make
+  'πάω',      // to go
+  'λέω',      // to say
+  'βλέπω',    // to see
+  'θέλω',     // to want
+  'ξέρω',     // to know
+  'έρχομαι',  // to come
+  'δίνω'      // to give
+];
+
 // Navigation history
 let navigationHistory = [];
 let currentPage = 'search';
@@ -103,6 +117,8 @@ function hideBackButton() {
 menuToggle.addEventListener('click', () => {
   sidebar.classList.toggle('open');
   menuToggle.classList.toggle('open');
+  // Stop the pulse animation after first click
+  menuToggle.classList.add('clicked');
 });
 
 // Close sidebar when clicking outside on mobile
@@ -172,6 +188,31 @@ verbList.forEach(infinitive => {
   }
 });
 
+// Show common verbs when clicking on empty search
+input.addEventListener("focus", () => {
+  if (input.value.trim() === "") {
+    showCommonVerbs();
+  }
+});
+
+function showCommonVerbs() {
+  suggestions.innerHTML = "";
+  
+  commonVerbs.forEach(verb => {
+    if (verbs[verb]) {
+      const div = document.createElement("div");
+      div.className = "suggestion common-verb";
+      div.innerHTML = `<strong>${verb}</strong> — ${verbs[verb].meaning}`;
+      div.addEventListener("click", () => {
+        input.value = verb;
+        suggestions.innerHTML = "";
+        showVerb(verb);
+      });
+      suggestions.appendChild(div);
+    }
+  });
+}
+
 // Search functionality
 input.addEventListener("input", () => {
   const query = input.value.trim().toLowerCase();
@@ -180,6 +221,7 @@ input.addEventListener("input", () => {
   
   if (query.length === 0) {
     result.innerHTML = "";
+    showCommonVerbs();
     return;
   }
   

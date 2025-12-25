@@ -142,6 +142,20 @@ input[type="text"],
   justify-content: center;
   align-items: center;
   gap: 5px;
+  animation: menuPulse 2s ease-in-out 3;
+}
+
+@keyframes menuPulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.6);
+    border-color: rgba(102, 126, 234, 0.8);
+    transform: scale(1.1);
+  }
 }
 
 .menu-toggle span {
@@ -166,6 +180,11 @@ input[type="text"],
 /* Move button when sidebar is open and animate to X */
 .menu-toggle.open {
   left: 270px;
+  animation: none; /* Stop pulse animation when opened */
+}
+
+.menu-toggle.clicked {
+  animation: none; /* Stop pulse animation after first click */
 }
 
 .menu-toggle.open span:nth-child(1) {
@@ -304,6 +323,19 @@ input::placeholder {
 
 .suggestion:last-child {
   border-bottom: none;
+}
+
+.suggestion.common-verb {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.suggestion.common-verb:hover {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.12) 0%, rgba(245, 245, 255, 1) 100%);
+}
+
+.suggestion.common-verb strong {
+  color: #667eea;
+  font-weight: 600;
 }
 
 /* Conjugation Notice */
