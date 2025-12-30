@@ -729,6 +729,8 @@ let currentCardIndex = 0;
 let correctCount = 0;
 let wrongCount = 0;
 let isFlipped = false;
+let wrongAnswers = []; // Track wrong answers for retry
+let useEssentialOnly = false; // Toggle for essential verbs only
 
 // Initialize flashcards
 function initFlashcards() {
@@ -742,6 +744,7 @@ function initFlashcards() {
   const btnCorrect = document.getElementById('btnCorrect');
   const btnWrong = document.getElementById('btnWrong');
   const btnRestart = document.getElementById('btnRestart');
+  const essentialToggle = document.getElementById('essentialToggle');
   
   if (btnFlip && !btnFlip.hasAttribute('data-listener')) {
     btnFlip.addEventListener('click', flipCard);
@@ -763,21 +766,52 @@ function initFlashcards() {
     btnRestart.setAttribute('data-listener', 'true');
   }
   
+  if (essentialToggle && !essentialToggle.hasAttribute('data-listener')) {
+    essentialToggle.addEventListener('change', (e) => {
+      useEssentialOnly = e.target.checked;
+      restartFlashcards();
+    });
+    essentialToggle.setAttribute('data-listener', 'true');
+  }
+  
   renderFlashcards();
 }
 
 // Generate a deck of 20 random verbs
-function generateFlashcardDeck() {
-  const availableVerbs = verbList.filter(v => verbs[v]);
+function generateFlashcardDeck(retryWrongOnly = false, verbsToRetry = []) {
+  let availableVerbs;
+  
+  if (retryWrongOnly && verbsToRetry.length > 0) {
+    // Use only the verbs that were answered wrong
+    availableVerbs = verbsToRetry;
+  } else {
+    // Use either essential verbs or all verbs based on toggle
+    if (useEssentialOnly) {
+      // Get essential verbs that exist in the database
+      availableVerbs = essentialVerbs
+        .map(item => item.verb)
+        .filter(v => verbs[v]);
+    } else {
+      availableVerbs = verbList.filter(v => verbs[v]);
+    }
+  }
+  
   const shuffled = [...availableVerbs].sort(() => Math.random() - 0.5);
-  flashcardDeck = shuffled.slice(0, 20).map(verb => ({
+  // If retrying wrong answers, use all of them; otherwise limit to 20
+  const deckSize = retryWrongOnly ? shuffled.length : Math.min(20, shuffled.length);
+  
+  flashcardDeck = shuffled.slice(0, deckSize).map(verb => ({
     verb: verb,
     meaning: verbs[verb].meaning,
     answered: false
   }));
+  
   currentCardIndex = 0;
-  correctCount = 0;
-  wrongCount = 0;
+  if (!retryWrongOnly) {
+    correctCount = 0;
+    wrongCount = 0;
+    wrongAnswers = [];
+  }
 }
 
 // Render flashcards
@@ -792,6 +826,10 @@ function renderFlashcards() {
     cardElement.className = 'flashcard';
     if (index === currentCardIndex) {
       cardElement.classList.add('active');
+      // Add slide-in animation
+      setTimeout(() => {
+        cardElement.classList.add('slide-in');
+      }, 10);
     }
     if (card.answered) {
       cardElement.classList.add('answered');
@@ -800,17 +838,23 @@ function renderFlashcards() {
     cardElement.innerHTML = `
       <div class="flashcard-inner">
         <div class="flashcard-front">
-          <div class="card-number">${index + 1} / 20</div>
+          <div class="card-number">${index + 1} / ${flashcardDeck.length}</div>
           <div class="card-verb">${card.verb}</div>
-          <div class="card-hint">What does this mean?</div>
+          <div class="card-hint">Tap to flip</div>
         </div>
         <div class="flashcard-back">
-          <div class="card-number">${index + 1} / 20</div>
+          <div class="card-number">${index + 1} / ${flashcardDeck.length}</div>
           <div class="card-meaning">${card.meaning}</div>
           <div class="card-verb-small">${card.verb}</div>
         </div>
       </div>
     `;
+    
+    // Add click-to-flip functionality
+    if (index === currentCardIndex) {
+      const inner = cardElement.querySelector('.flashcard-inner');
+      inner.addEventListener('click', flipCard);
+    }
     
     track.appendChild(cardElement);
   });
@@ -837,25 +881,35 @@ function handleAnswer(isCorrect) {
   const currentCard = flashcardDeck[currentCardIndex];
   if (currentCard.answered) return; // Already answered
   
+  // Get current card element
+  const cards = document.querySelectorAll('.flashcard');
+  const currentCardElement = cards[currentCardIndex];
+  
   // Mark as answered
   currentCard.answered = true;
   
-  // Update counts
+  // Add swipe animation class
   if (isCorrect) {
+    currentCardElement.classList.add('swipe-right');
     correctCount++;
   } else {
+    currentCardElement.classList.add('swipe-left');
     wrongCount++;
+    // Track wrong answer for retry option
+    wrongAnswers.push(currentCard.verb);
   }
   
-  // Move to next card
-  currentCardIndex++;
-  
-  // Check if deck is complete
-  if (currentCardIndex >= flashcardDeck.length) {
-    showCompletionMessage();
-  } else {
-    renderFlashcards();
-  }
+  // Move to next card after animation
+  setTimeout(() => {
+    currentCardIndex++;
+    
+    // Check if deck is complete
+    if (currentCardIndex >= flashcardDeck.length) {
+      showCompletionMessage();
+    } else {
+      renderFlashcards();
+    }
+  }, 400); // Match animation duration
 }
 
 // Show completion message
@@ -863,34 +917,65 @@ function showCompletionMessage() {
   const track = document.getElementById('flashcardTrack');
   if (!track) return;
   
-  const percentage = Math.round((correctCount / 20) * 100);
+  const total = flashcardDeck.length;
+  const percentage = Math.round((correctCount / total) * 100);
   let message = '';
   let emoji = '';
+  let encouragement = '';
   
-  if (percentage >= 90) {
+  if (percentage === 100) {
+    message = 'Perfect Score!';
+    emoji = '🏆';
+    encouragement = "You've mastered them all!";
+  } else if (percentage >= 90) {
     message = 'Excellent!';
     emoji = '🌟';
+    encouragement = 'Almost perfect!';
   } else if (percentage >= 70) {
     message = 'Great Job!';
     emoji = '🎉';
+    encouragement = 'Keep up the good work!';
   } else if (percentage >= 50) {
     message = 'Good Effort!';
     emoji = '👍';
+    encouragement = 'Practice makes perfect!';
   } else {
-    message = 'Keep Practicing!';
+    message = 'Keep Going!';
     emoji = '💪';
+    encouragement = 'You\'re improving!';
+  }
+  
+  let retrySection = '';
+  if (wrongAnswers.length > 0) {
+    retrySection = `
+      <p class="completion-encouragement">${encouragement}</p>
+      <button class="completion-retry" onclick="retryWrongAnswers()">
+        Practice ${wrongAnswers.length} Missed Verb${wrongAnswers.length > 1 ? 's' : ''}
+      </button>
+    `;
+  } else {
+    retrySection = `
+      <p class="completion-encouragement">${encouragement}</p>
+    `;
   }
   
   track.innerHTML = `
-    <div class="flashcard active completion-card">
+    <div class="flashcard active completion-card slide-in">
       <div class="completion-content">
-        <div class="completion-emoji">${emoji}</div>
-        <h2>${message}</h2>
-        <div class="completion-score">${correctCount} / 20 correct</div>
-        <p class="completion-percentage">${percentage}% accuracy</p>
-        <button class="completion-restart" onclick="restartFlashcards()">
-          Try Another Set
-        </button>
+        <div class="completion-top">
+          <div class="completion-emoji">${emoji}</div>
+          <h2>${message}</h2>
+          <div class="completion-score">${correctCount} / ${total}</div>
+          <p class="completion-percentage">${percentage}% accuracy</p>
+        </div>
+        <div class="completion-middle">
+          ${retrySection}
+        </div>
+        <div class="completion-bottom">
+          <button class="completion-restart" onclick="restartFlashcards()">
+            Try New Set
+          </button>
+        </div>
       </div>
     </div>
   `;
@@ -899,14 +984,31 @@ function showCompletionMessage() {
   updateProgress();
 }
 
-// Restart flashcards
+// Restart flashcards with new random set
 function restartFlashcards() {
   flashcardDeck = [];
   currentCardIndex = 0;
   correctCount = 0;
   wrongCount = 0;
+  wrongAnswers = [];
   isFlipped = false;
   generateFlashcardDeck();
+  renderFlashcards();
+}
+
+// Retry only the wrong answers
+function retryWrongAnswers() {
+  // Save the wrong answers before clearing
+  const verbsToRetry = [...wrongAnswers];
+  
+  flashcardDeck = [];
+  currentCardIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  wrongAnswers = []; // Clear for the new round
+  isFlipped = false;
+  
+  generateFlashcardDeck(true, verbsToRetry); // Pass true and the verbs to retry
   renderFlashcards();
 }
 
@@ -929,6 +1031,9 @@ function updateProgress() {
   const progressBar = document.getElementById('progressBar');
   if (!progressBar) return;
   
-  const progress = (currentCardIndex / flashcardDeck.length) * 100;
+  const progress = flashcardDeck.length > 0 ? (currentCardIndex / flashcardDeck.length) * 100 : 0;
   progressBar.style.width = `${progress}%`;
 }
+
+// Make retryWrongAnswers available globally
+window.retryWrongAnswers = retryWrongAnswers;
