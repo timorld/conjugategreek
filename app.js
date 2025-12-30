@@ -177,6 +177,7 @@ function navigateTo(page, saveHistory = true) {
   // Initialize page content
   if (page === 'alphabetical') renderAlphabeticalList();
   if (page === 'essential') renderEssentialList();
+  if (page === 'flashcards') initFlashcards();
   
   // Hide back button when navigating via menu
   if (saveHistory) {
@@ -719,4 +720,215 @@ function selectVerb(verb) {
   
   // Scroll to top on mobile
   window.scrollTo(0, 0);
+}
+
+// ========== FLASHCARDS FUNCTIONALITY ==========
+
+let flashcardDeck = [];
+let currentCardIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let isFlipped = false;
+
+// Initialize flashcards
+function initFlashcards() {
+  // Only generate new deck if it's empty or user clicked restart
+  if (flashcardDeck.length === 0) {
+    generateFlashcardDeck();
+  }
+  
+  // Setup event listeners (only once)
+  const btnFlip = document.getElementById('btnFlip');
+  const btnCorrect = document.getElementById('btnCorrect');
+  const btnWrong = document.getElementById('btnWrong');
+  const btnRestart = document.getElementById('btnRestart');
+  
+  if (btnFlip && !btnFlip.hasAttribute('data-listener')) {
+    btnFlip.addEventListener('click', flipCard);
+    btnFlip.setAttribute('data-listener', 'true');
+  }
+  
+  if (btnCorrect && !btnCorrect.hasAttribute('data-listener')) {
+    btnCorrect.addEventListener('click', () => handleAnswer(true));
+    btnCorrect.setAttribute('data-listener', 'true');
+  }
+  
+  if (btnWrong && !btnWrong.hasAttribute('data-listener')) {
+    btnWrong.addEventListener('click', () => handleAnswer(false));
+    btnWrong.setAttribute('data-listener', 'true');
+  }
+  
+  if (btnRestart && !btnRestart.hasAttribute('data-listener')) {
+    btnRestart.addEventListener('click', restartFlashcards);
+    btnRestart.setAttribute('data-listener', 'true');
+  }
+  
+  renderFlashcards();
+}
+
+// Generate a deck of 20 random verbs
+function generateFlashcardDeck() {
+  const availableVerbs = verbList.filter(v => verbs[v]);
+  const shuffled = [...availableVerbs].sort(() => Math.random() - 0.5);
+  flashcardDeck = shuffled.slice(0, 20).map(verb => ({
+    verb: verb,
+    meaning: verbs[verb].meaning,
+    answered: false
+  }));
+  currentCardIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+}
+
+// Render flashcards
+function renderFlashcards() {
+  const track = document.getElementById('flashcardTrack');
+  if (!track) return;
+  
+  track.innerHTML = '';
+  
+  flashcardDeck.forEach((card, index) => {
+    const cardElement = document.createElement('div');
+    cardElement.className = 'flashcard';
+    if (index === currentCardIndex) {
+      cardElement.classList.add('active');
+    }
+    if (card.answered) {
+      cardElement.classList.add('answered');
+    }
+    
+    cardElement.innerHTML = `
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="card-number">${index + 1} / 20</div>
+          <div class="card-verb">${card.verb}</div>
+          <div class="card-hint">What does this mean?</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="card-number">${index + 1} / 20</div>
+          <div class="card-meaning">${card.meaning}</div>
+          <div class="card-verb-small">${card.verb}</div>
+        </div>
+      </div>
+    `;
+    
+    track.appendChild(cardElement);
+  });
+  
+  updateStats();
+  updateProgress();
+  isFlipped = false;
+}
+
+// Flip current card
+function flipCard() {
+  const cards = document.querySelectorAll('.flashcard');
+  const currentCard = cards[currentCardIndex];
+  if (!currentCard) return;
+  
+  isFlipped = !isFlipped;
+  currentCard.classList.toggle('flipped', isFlipped);
+}
+
+// Handle answer (correct or wrong)
+function handleAnswer(isCorrect) {
+  if (currentCardIndex >= flashcardDeck.length) return;
+  
+  const currentCard = flashcardDeck[currentCardIndex];
+  if (currentCard.answered) return; // Already answered
+  
+  // Mark as answered
+  currentCard.answered = true;
+  
+  // Update counts
+  if (isCorrect) {
+    correctCount++;
+  } else {
+    wrongCount++;
+  }
+  
+  // Move to next card
+  currentCardIndex++;
+  
+  // Check if deck is complete
+  if (currentCardIndex >= flashcardDeck.length) {
+    showCompletionMessage();
+  } else {
+    renderFlashcards();
+  }
+}
+
+// Show completion message
+function showCompletionMessage() {
+  const track = document.getElementById('flashcardTrack');
+  if (!track) return;
+  
+  const percentage = Math.round((correctCount / 20) * 100);
+  let message = '';
+  let emoji = '';
+  
+  if (percentage >= 90) {
+    message = 'Excellent!';
+    emoji = '🌟';
+  } else if (percentage >= 70) {
+    message = 'Great Job!';
+    emoji = '🎉';
+  } else if (percentage >= 50) {
+    message = 'Good Effort!';
+    emoji = '👍';
+  } else {
+    message = 'Keep Practicing!';
+    emoji = '💪';
+  }
+  
+  track.innerHTML = `
+    <div class="flashcard active completion-card">
+      <div class="completion-content">
+        <div class="completion-emoji">${emoji}</div>
+        <h2>${message}</h2>
+        <div class="completion-score">${correctCount} / 20 correct</div>
+        <p class="completion-percentage">${percentage}% accuracy</p>
+        <button class="completion-restart" onclick="restartFlashcards()">
+          Try Another Set
+        </button>
+      </div>
+    </div>
+  `;
+  
+  updateStats();
+  updateProgress();
+}
+
+// Restart flashcards
+function restartFlashcards() {
+  flashcardDeck = [];
+  currentCardIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  isFlipped = false;
+  generateFlashcardDeck();
+  renderFlashcards();
+}
+
+// Update stats display
+function updateStats() {
+  const correctEl = document.getElementById('correctCount');
+  const wrongEl = document.getElementById('wrongCount');
+  const remainingEl = document.getElementById('remainingCount');
+  
+  if (correctEl) correctEl.textContent = correctCount;
+  if (wrongEl) wrongEl.textContent = wrongCount;
+  if (remainingEl) {
+    const remaining = flashcardDeck.length - currentCardIndex;
+    remainingEl.textContent = remaining >= 0 ? remaining : 0;
+  }
+}
+
+// Update progress bar
+function updateProgress() {
+  const progressBar = document.getElementById('progressBar');
+  if (!progressBar) return;
+  
+  const progress = (currentCardIndex / flashcardDeck.length) * 100;
+  progressBar.style.width = `${progress}%`;
 }

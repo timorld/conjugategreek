@@ -767,3 +767,379 @@ tr.imperative-third-person {
 .overlay.active {
   display: block;
 }
+
+/* ========== FLASHCARDS ========== */
+.flashcard-container {
+  max-width: 600px;
+}
+
+.flashcard-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-correct {
+  color: #28a745;
+}
+
+.stat-wrong {
+  color: #dc3545;
+}
+
+.stat-remaining {
+  color: #667eea;
+}
+
+.flashcard-carousel {
+  perspective: 1000px;
+  margin-bottom: 2rem;
+  min-height: 350px;
+  position: relative;
+}
+
+.flashcard-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flashcard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 350px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  transform: translateX(100%) scale(0.8);
+}
+
+.flashcard.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0) scale(1);
+  z-index: 10;
+}
+
+.flashcard.answered {
+  transform: translateX(-100%) scale(0.8);
+  opacity: 0;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid #e8e8e8;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.card-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.flashcard-back .card-number {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.card-verb {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.card-hint {
+  font-size: 1rem;
+  color: #888;
+  font-style: italic;
+}
+
+.card-meaning {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.card-verb-small {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.flashcard-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.fc-btn {
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.fc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.fc-btn:active {
+  transform: translateY(0);
+}
+
+.fc-btn-wrong {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+}
+
+.fc-btn-wrong:hover {
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+}
+
+.fc-btn-flip {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.fc-btn-flip:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.fc-btn-correct {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+  color: white;
+}
+
+.fc-btn-correct:hover {
+  background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+}
+
+.flashcard-progress {
+  width: 100%;
+  height: 8px;
+  background: #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.5s ease;
+  border-radius: 8px;
+}
+
+.fc-restart {
+  width: 100%;
+  padding: 1rem;
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.fc-restart:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.fc-restart:active {
+  transform: translateY(0);
+}
+
+/* Completion Card */
+.completion-card {
+  position: relative !important;
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+  height: 400px;
+}
+
+.completion-card .flashcard-inner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.completion-content {
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.completion-emoji {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.completion-content h2 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.completion-score {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.completion-percentage {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.completion-restart {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.completion-restart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.completion-restart:active {
+  transform: translateY(0);
+}
+
+/* Mobile Flashcard Adjustments */
+@media (max-width: 768px) {
+  .flashcard {
+    height: 300px;
+  }
+  
+  .card-verb {
+    font-size: 2.5rem;
+  }
+  
+  .card-meaning {
+    font-size: 1.75rem;
+  }
+  
+  .card-verb-small {
+    font-size: 1.25rem;
+  }
+  
+  .flashcard-stats {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  
+  .fc-btn-wrong,
+  .fc-btn-correct {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .fc-btn-flip {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .completion-card {
+    height: 350px;
+  }
+  
+  .completion-emoji {
+    font-size: 4rem;
+  }
+  
+  .completion-content h2 {
+    font-size: 2rem;
+  }
+  
+  .completion-score {
+    font-size: 2.5rem;
+  }
+}
