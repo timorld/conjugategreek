@@ -1,6 +1,6 @@
 // Verbs are loaded from verbs-new-database.js
-// Get all verb names for autocomplete
-const verbList = Object.keys(verbs);
+// Verb list will be initialized when DOM loads
+let verbList = [];
 
 // 100 Essential Greek Verbs List
 const essentialVerbs = [
@@ -111,24 +111,49 @@ let navigationHistory = [];
 let currentPage = 'search';
 
 // DOM Elements
-const input = document.getElementById("verbInput");
-const result = document.getElementById("result");
-const suggestions = document.getElementById("suggestions");
-const sidebar = document.getElementById("sidebar");
-const menuToggle = document.getElementById("menuToggle");
+let input, result, suggestions, sidebar, menuToggle;
 
-// Navigation
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const page = link.dataset.page;
-    navigateTo(page);
-    
-    // Close mobile menu
-    sidebar.classList.remove('open');
-    menuToggle.classList.remove('open');
-  });
+// Initialize app when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize verb list from loaded database
+  verbList = Object.keys(verbs);
+  
+  // Get DOM elements
+  input = document.getElementById("verbInput");
+  result = document.getElementById("result");
+  suggestions = document.getElementById("suggestions");
+  sidebar = document.getElementById("sidebar");
+  menuToggle = document.getElementById("menuToggle");
+
+  // Setup navigation
+  setupNavigation();
+  
+  // Setup search functionality
+  setupSearch();
+  
+  // Setup mobile menu
+  setupMobileMenu();
+  
+  // Add glow animation to menu toggle on page load (mobile only)
+  if (window.innerWidth <= 768) {
+    menuToggle.classList.add('glow-animation');
+  }
 });
+
+// Setup navigation
+function setupNavigation() {
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      navigateTo(page);
+      
+      // Close mobile menu
+      sidebar.classList.remove('open');
+      menuToggle.classList.remove('open');
+    });
+  });
+}
 
 function navigateTo(page, saveHistory = true) {
   // Save current state to history before navigating
@@ -198,21 +223,23 @@ function hideBackButton() {
   }
 }
 
-// Mobile menu toggle
-menuToggle.addEventListener('click', () => {
-  sidebar.classList.toggle('open');
-  menuToggle.classList.toggle('open');
-});
+// Mobile menu setup function
+function setupMobileMenu() {
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    menuToggle.classList.toggle('open');
+  });
 
-// Close sidebar when clicking outside on mobile
-document.addEventListener('click', (e) => {
-  if (window.innerWidth <= 768) {
-    if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-      sidebar.classList.remove('open');
-      menuToggle.classList.remove('open');
+  // Close sidebar when clicking outside on mobile
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
+      if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('open');
+        menuToggle.classList.remove('open');
+      }
     }
-  }
-});
+  });
+}
 
 // Function to remove Greek accents for search
 function removeGreekAccents(text) {
@@ -248,81 +275,83 @@ function greekToLatin(text) {
   return text.split('').map(char => latinMap[char] || char).join('');
 }
 
-// Search functionality
-input.addEventListener("input", () => {
-  const query = input.value.trim().toLowerCase();
-  const queryNoAccents = removeGreekAccents(query);
-  suggestions.innerHTML = "";
-  
-  if (query.length === 0) {
-    result.innerHTML = "";
-    return;
-  }
-  
-  // Check if input is Latin characters (not Greek)
-  const isLatinInput = /^[a-z]+$/.test(query);
-  
-  // Match verbs with or without accents, or via Latin transliteration
-  const matches = verbList.filter(v => {
-    const verbNoAccents = removeGreekAccents(v.toLowerCase());
+// Search functionality setup
+function setupSearch() {
+  input.addEventListener("input", () => {
+    const query = input.value.trim().toLowerCase();
+    const queryNoAccents = removeGreekAccents(query);
+    suggestions.innerHTML = "";
     
-    if (isLatinInput) {
-      // Convert Greek verb to Latin and compare
-      const verbLatin = greekToLatin(v);
-      return verbLatin.startsWith(query);
+    if (query.length === 0) {
+      result.innerHTML = "";
+      return;
+    }
+    
+    // Check if input is Latin characters (not Greek)
+    const isLatinInput = /^[a-z]+$/.test(query);
+    
+    // Match verbs with or without accents, or via Latin transliteration
+    const matches = verbList.filter(v => {
+      const verbNoAccents = removeGreekAccents(v.toLowerCase());
+      
+      if (isLatinInput) {
+        // Convert Greek verb to Latin and compare
+        const verbLatin = greekToLatin(v);
+        return verbLatin.startsWith(query);
+      } else {
+        // Greek input - match with or without accents
+        return verbNoAccents.startsWith(queryNoAccents);
+      }
+    });
+    
+    matches.slice(0, 5).forEach(verb => {
+      const div = document.createElement("div");
+      div.className = "suggestion";
+      div.textContent = `${verb} — ${verbs[verb].meaning}`;
+      div.addEventListener("click", () => {
+        input.value = verb;
+        suggestions.innerHTML = "";
+        showVerb(verb);
+      });
+      suggestions.appendChild(div);
+    });
+    
+    // Try exact match with or without accents
+    if (verbs[query]) {
+      showVerb(query);
     } else {
-      // Greek input - match with or without accents
-      return verbNoAccents.startsWith(queryNoAccents);
+      let exactMatch;
+      
+      if (isLatinInput) {
+        // Find verb that matches Latin transliteration
+        exactMatch = verbList.find(v => greekToLatin(v) === query);
+      } else {
+        // Find verb that matches without accents
+        exactMatch = verbList.find(v => removeGreekAccents(v.toLowerCase()) === queryNoAccents);
+      }
+      
+      if (exactMatch) {
+        showVerb(exactMatch);
+      } else {
+        result.innerHTML = "";
+      }
     }
   });
-  
-  matches.slice(0, 5).forEach(verb => {
-    const div = document.createElement("div");
-    div.className = "suggestion";
-    div.textContent = `${verb} — ${verbs[verb].meaning}`;
-    div.addEventListener("click", () => {
-      input.value = verb;
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const verb = input.value.trim();
       suggestions.innerHTML = "";
       showVerb(verb);
-    });
-    suggestions.appendChild(div);
+    }
   });
-  
-  // Try exact match with or without accents
-  if (verbs[query]) {
-    showVerb(query);
-  } else {
-    let exactMatch;
-    
-    if (isLatinInput) {
-      // Find verb that matches Latin transliteration
-      exactMatch = verbList.find(v => greekToLatin(v) === query);
-    } else {
-      // Find verb that matches without accents
-      exactMatch = verbList.find(v => removeGreekAccents(v.toLowerCase()) === queryNoAccents);
-    }
-    
-    if (exactMatch) {
-      showVerb(exactMatch);
-    } else {
-      result.innerHTML = "";
-    }
-  }
-});
 
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    const verb = input.value.trim();
-    suggestions.innerHTML = "";
-    showVerb(verb);
-  }
-});
-
-document.addEventListener("click", (e) => {
-  if (!e.target.closest(".search-container")) {
-    suggestions.innerHTML = "";
-  }
-});
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-container")) {
+      suggestions.innerHTML = "";
+    }
+  });
+}
 
 // Tense color mapping
 const tenseClasses = {
