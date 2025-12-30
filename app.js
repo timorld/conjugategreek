@@ -1,23 +1,109 @@
-// Merge all extra verb data into main verbs object
-Object.assign(verbs, verbsExtra1, verbsExtra2, verbsExtra3, verbsExtra4);
-// Merge newly extracted verbs (600 verbs from the book)
-Object.assign(verbs, verbs_new, verbs_new_new_1, verbs_new_new_2, verbs_new_new_3);
-
+// Verbs are loaded from verbs-new-database.js
 // Get all verb names for autocomplete
 const verbList = Object.keys(verbs);
 
-// Most common Greek verbs to show when clicking empty search
-const commonVerbs = [
-  'είμαι',    // to be
-  'έχω',      // to have
-  'κάνω',     // to do/make
-  'πάω',      // to go
-  'λέω',      // to say
-  'βλέπω',    // to see
-  'θέλω',     // to want
-  'ξέρω',     // to know
-  'έρχομαι',  // to come
-  'δίνω'      // to give
+// 100 Essential Greek Verbs List
+const essentialVerbs = [
+  {verb: "είμαι", meaning: "to be"},
+  {verb: "έχω", meaning: "to have"},
+  {verb: "κάνω", meaning: "to do, make"},
+  {verb: "πάω", meaning: "to go"},
+  {verb: "έρχομαι", meaning: "to come"},
+  {verb: "θέλω", meaning: "to want"},
+  {verb: "μπορώ", meaning: "can, to be able"},
+  {verb: "ξέρω", meaning: "to know"},
+  {verb: "βλέπω", meaning: "to see"},
+  {verb: "λέω", meaning: "to say, tell"},
+  {verb: "τρώω", meaning: "to eat"},
+  {verb: "πίνω", meaning: "to drink"},
+  {verb: "δουλεύω", meaning: "to work"},
+  {verb: "μιλώ", meaning: "to speak"},
+  {verb: "ακούω", meaning: "to hear, listen"},
+  {verb: "διαβάζω", meaning: "to read"},
+  {verb: "γράφω", meaning: "to write"},
+  {verb: "μένω", meaning: "to stay, live"},
+  {verb: "αγαπώ", meaning: "to love"},
+  {verb: "περπατώ", meaning: "to walk"},
+  {verb: "κοιμάμαι", meaning: "to sleep"},
+  {verb: "ξυπνώ", meaning: "to wake up"},
+  {verb: "φεύγω", meaning: "to leave"},
+  {verb: "παίρνω", meaning: "to take, get"},
+  {verb: "δίνω", meaning: "to give"},
+  {verb: "βρίσκω", meaning: "to find"},
+  {verb: "ζω", meaning: "to live"},
+  {verb: "πιστεύω", meaning: "to believe"},
+  {verb: "καταλαβαίνω", meaning: "to understand"},
+  {verb: "πηγαίνω", meaning: "to go"},
+  {verb: "μαθαίνω", meaning: "to learn"},
+  {verb: "σκέφτομαι", meaning: "to think"},
+  {verb: "νομίζω", meaning: "to think, believe"},
+  {verb: "περιμένω", meaning: "to wait"},
+  {verb: "ψάχνω", meaning: "to search, look for"},
+  {verb: "χρειάζομαι", meaning: "to need"},
+  {verb: "αρέσω", meaning: "to like, please"},
+  {verb: "φοβάμαι", meaning: "to fear, be afraid"},
+  {verb: "θυμάμαι", meaning: "to remember"},
+  {verb: "ξεχνώ", meaning: "to forget"},
+  {verb: "αρχίζω", meaning: "to begin, start"},
+  {verb: "τελειώνω", meaning: "to finish, end"},
+  {verb: "ανοίγω", meaning: "to open"},
+  {verb: "κλείνω", meaning: "to close"},
+  {verb: "στέλνω", meaning: "to send"},
+  {verb: "φέρνω", meaning: "to bring"},
+  {verb: "βάζω", meaning: "to put"},
+  {verb: "βγάζω", meaning: "to take out"},
+  {verb: "πετώ", meaning: "to throw, fly"},
+  {verb: "πέφτω", meaning: "to fall"},
+  {verb: "σηκώνω", meaning: "to lift, raise"},
+  {verb: "κάθομαι", meaning: "to sit"},
+  {verb: "στέκομαι", meaning: "to stand"},
+  {verb: "τρέχω", meaning: "to run"},
+  {verb: "οδηγώ", meaning: "to drive"},
+  {verb: "ταξιδεύω", meaning: "to travel"},
+  {verb: "επιστρέφω", meaning: "to return"},
+  {verb: "φτάνω", meaning: "to arrive"},
+  {verb: "μπαίνω", meaning: "to enter"},
+  {verb: "βγαίνω", meaning: "to exit, go out"},
+  {verb: "ρωτώ", meaning: "to ask"},
+  {verb: "απαντώ", meaning: "to answer"},
+  {verb: "βοηθώ", meaning: "to help"},
+  {verb: "πληρώνω", meaning: "to pay"},
+  {verb: "αγοράζω", meaning: "to buy"},
+  {verb: "πουλώ", meaning: "to sell"},
+  {verb: "δοκιμάζω", meaning: "to try, taste"},
+  {verb: "χρησιμοποιώ", meaning: "to use"},
+  {verb: "ζητώ", meaning: "to ask for, seek"},
+  {verb: "προσπαθώ", meaning: "to try, attempt"},
+  {verb: "αλλάζω", meaning: "to change"},
+  {verb: "συνεχίζω", meaning: "to continue"},
+  {verb: "σταματώ", meaning: "to stop"},
+  {verb: "γεννιέμαι", meaning: "to be born"},
+  {verb: "πεθαίνω", meaning: "to die"},
+  {verb: "παντρεύομαι", meaning: "to marry"},
+  {verb: "γνωρίζω", meaning: "to know, meet"},
+  {verb: "συναντώ", meaning: "to meet"},
+  {verb: "χαιρετώ", meaning: "to greet"},
+  {verb: "ευχαριστώ", meaning: "to thank"},
+  {verb: "συγχωρώ", meaning: "to forgive"},
+  {verb: "υπόσχομαι", meaning: "to promise"},
+  {verb: "αποφασίζω", meaning: "to decide"},
+  {verb: "επιλέγω", meaning: "to choose"},
+  {verb: "προτιμώ", meaning: "to prefer"},
+  {verb: "ονειρεύομαι", meaning: "to dream"},
+  {verb: "ελπίζω", meaning: "to hope"},
+  {verb: "χάνω", meaning: "to lose"},
+  {verb: "κερδίζω", meaning: "to win, earn"},
+  {verb: "παίζω", meaning: "to play"},
+  {verb: "τραγουδώ", meaning: "to sing"},
+  {verb: "χορεύω", meaning: "to dance"},
+  {verb: "μαγειρεύω", meaning: "to cook"},
+  {verb: "καθαρίζω", meaning: "to clean"},
+  {verb: "πλένω", meaning: "to wash"},
+  {verb: "ντύνομαι", meaning: "to dress"},
+  {verb: "φορώ", meaning: "to wear"},
+  {verb: "κόβω", meaning: "to cut"},
+  {verb: "σπάω", meaning: "to break"},
+  {verb: "φτιάχνω", meaning: "to fix, make"}
 ];
 
 // Navigation history
@@ -66,7 +152,6 @@ function navigateTo(page, saveHistory = true) {
   // Initialize page content
   if (page === 'alphabetical') renderAlphabeticalList();
   if (page === 'essential') renderEssentialList();
-  if (page === 'flashcards') initFlashcards();
   
   // Hide back button when navigating via menu
   if (saveHistory) {
@@ -117,8 +202,6 @@ function hideBackButton() {
 menuToggle.addEventListener('click', () => {
   sidebar.classList.toggle('open');
   menuToggle.classList.toggle('open');
-  // Stop the pulse animation after first click
-  menuToggle.classList.add('clicked');
 });
 
 // Close sidebar when clicking outside on mobile
@@ -165,54 +248,6 @@ function greekToLatin(text) {
   return text.split('').map(char => latinMap[char] || char).join('');
 }
 
-// Build reverse lookup: conjugated form -> infinitive verb
-const conjugatedLookup = {};
-verbList.forEach(infinitive => {
-  const verbData = verbs[infinitive];
-  // Loop through all tenses
-  for (const tense in verbData) {
-    if (tense === "meaning") continue;
-    // Loop through all persons in each tense
-    for (const person in verbData[tense]) {
-      const conjugatedForm = verbData[tense][person];
-      // Map this conjugated form to its infinitive (store without accents)
-      if (conjugatedForm && conjugatedForm.trim()) {
-        const formNoAccents = removeGreekAccents(conjugatedForm.toLowerCase());
-        conjugatedLookup[formNoAccents] = infinitive;
-        
-        // Also create Latin transliteration lookup
-        const formLatin = greekToLatin(conjugatedForm);
-        conjugatedLookup[formLatin] = infinitive;
-      }
-    }
-  }
-});
-
-// Show common verbs when clicking on empty search
-input.addEventListener("focus", () => {
-  if (input.value.trim() === "") {
-    showCommonVerbs();
-  }
-});
-
-function showCommonVerbs() {
-  suggestions.innerHTML = "";
-  
-  commonVerbs.forEach(verb => {
-    if (verbs[verb]) {
-      const div = document.createElement("div");
-      div.className = "suggestion common-verb";
-      div.innerHTML = `<strong>${verb}</strong> — ${verbs[verb].meaning}`;
-      div.addEventListener("click", () => {
-        input.value = verb;
-        suggestions.innerHTML = "";
-        showVerb(verb);
-      });
-      suggestions.appendChild(div);
-    }
-  });
-}
-
 // Search functionality
 input.addEventListener("input", () => {
   const query = input.value.trim().toLowerCase();
@@ -221,7 +256,6 @@ input.addEventListener("input", () => {
   
   if (query.length === 0) {
     result.innerHTML = "";
-    showCommonVerbs();
     return;
   }
   
@@ -271,51 +305,16 @@ input.addEventListener("input", () => {
     if (exactMatch) {
       showVerb(exactMatch);
     } else {
-      // Check if it's a conjugated form (works for both Greek and Latin)
-      const lookupKey = isLatinInput ? query : queryNoAccents;
-      const infinitive = conjugatedLookup[lookupKey];
-      if (infinitive) {
-        showVerb(infinitive, query);
-      } else {
-        result.innerHTML = "";
-      }
+      result.innerHTML = "";
     }
   }
 });
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    const query = input.value.trim();
-    const queryLower = query.toLowerCase();
-    const queryNoAccents = removeGreekAccents(queryLower);
-    const isLatinInput = /^[a-z]+$/.test(queryLower);
+    const verb = input.value.trim();
     suggestions.innerHTML = "";
-    
-    // Try direct match first
-    if (verbs[query]) {
-      showVerb(query);
-    } else {
-      // Check if it's infinitive without accents or Latin
-      let exactMatch;
-      if (isLatinInput) {
-        exactMatch = verbList.find(v => greekToLatin(v) === queryLower);
-      } else {
-        exactMatch = verbList.find(v => removeGreekAccents(v.toLowerCase()) === queryNoAccents);
-      }
-      
-      if (exactMatch) {
-        showVerb(exactMatch);
-      } else {
-        // Check if it's a conjugated form (works for both Greek and Latin)
-        const lookupKey = isLatinInput ? queryLower : queryNoAccents;
-        const infinitive = conjugatedLookup[lookupKey];
-        if (infinitive) {
-          showVerb(infinitive, query);
-        } else {
-          showVerb(query); // Will show "not found" message
-        }
-      }
-    }
+    showVerb(verb);
   }
 });
 
@@ -330,11 +329,32 @@ const tenseClasses = {
   "Ενεστώτας (Present)": "tense-present",
   "Μέλλοντας Στιγμιαίος (Simple Future)": "tense-simple-future",
   "Αόριστος (Simple Past)": "tense-aorist",
+  "Παρατατικός (Continuous Past)": "tense-continuous-past",
+  "Προστακτική (Imperative)": "tense-imperative",
+  "Υποτακτική Ενεστώτα (Present Subjunctive)": "tense-subjunctive",
+  "Μετοχή Ενεστώτα (Present Participle)": "tense-participle",
+  "Παρακείμενος (Present Perfect)": "tense-perfect",
   "Μέλλοντας Εξακολουθητικός (Continuous Future)": "tense-continuous-future",
-  "Παρατατικός (Imperfect Past)": "tense-imperfect"
+  "Υποτακτική Αορίστου (Past Subjunctive)": "tense-past-subjunctive",
+  "Απαρέμφατο (Simple Infinitive)": "tense-infinitive",
+  "Υπερσυντέλικος (Past Perfect)": "tense-past-perfect",
+  "Υποτακτική Παρακειμένου (Perfect Subjunctive)": "tense-perfect-subjunctive",
+  "Συντελεσμένος Μέλλοντας (Future Perfect)": "tense-future-perfect"
 };
 
-function showVerb(verb, searchedConjugation = null) {
+// Imperative tense names that should be combined
+const imperativeTenses = [
+  'Προστακτική Στιγμιαία (Simple Imperative)',
+  'Προστακτική Εξακολουθητική (Cont. Imperative)'
+];
+
+// Special forms (single value forms)
+const specialForms = [
+  'Μετοχή Ενεστώτα (Present Participle)',
+  'Απαρέμφατο (Simple Infinitive)'
+];
+
+function showVerb(verb) {
   result.innerHTML = "";
 
   if (!verbs[verb]) {
@@ -344,38 +364,198 @@ function showVerb(verb, searchedConjugation = null) {
 
   const data = verbs[verb];
 
-  // Show helpful message if user searched for a conjugated form
-  if (searchedConjugation) {
-    const notice = document.createElement("div");
-    notice.className = "conjugation-notice";
-    notice.innerHTML = `<span class="notice-icon">ℹ️</span> You searched for "<strong>${searchedConjugation}</strong>" — showing infinitive: <strong>${verb}</strong>`;
-    result.appendChild(notice);
-  }
-
+  // Create header with verb name and meaning
   const header = document.createElement("div");
   header.className = "verb-header";
-  header.innerHTML = `<h2>${verb}</h2><span class="meaning">${data.meaning}</span>`;
+  let headerHTML = `<h2>${verb}</h2><span class="meaning">${data.meaning}</span>`;
+  
+  // Add voice badge if available
+  if (data.voice) {
+    const voiceBadge = data.voice === 'Active' ? 'Ενεργητική' : 'Παθητική';
+    headerHTML += `<span class="voice-badge ${data.voice.toLowerCase()}">${voiceBadge}</span>`;
+  }
+  
+  header.innerHTML = headerHTML;
   result.appendChild(header);
 
-  for (const tense in data) {
-    if (tense === "meaning") continue;
+  // Container for default tenses
+  const defaultContainer = document.createElement("div");
+  defaultContainer.className = "tenses-container default-tenses";
+  
+  // Process default tenses
+  let hasImperative = false;
+  const imperativeData = {};
+  
+  defaultTenseOrder.forEach(tense => {
+    // Check if this tense exists in the verb data
+    if (!data[tense]) return;
     
-    const table = document.createElement("table");
-    const tenseClass = tenseClasses[tense] || "";
-    table.className = tenseClass;
-    
-    const caption = document.createElement("caption");
-    caption.textContent = tense;
-    table.appendChild(caption);
-
-    for (const person in data[tense]) {
-      const row = table.insertRow();
-      row.insertCell().textContent = person;
-      row.insertCell().textContent = data[tense][person];
+    // Handle imperatives - collect them for combined table
+    if (imperativeTenses.includes(tense)) {
+      hasImperative = true;
+      imperativeData[tense] = data[tense];
+      return;
     }
-
-    result.appendChild(table);
+    
+    // Create table for regular tenses
+    const table = createTenseTable(tense, data[tense]);
+    defaultContainer.appendChild(table);
+  });
+  
+  // Add combined imperative table if we have imperative data
+  if (hasImperative) {
+    const imperativeTable = createCombinedImperativeTable(imperativeData);
+    defaultContainer.appendChild(imperativeTable);
   }
+  
+  result.appendChild(defaultContainer);
+  
+  // Check if there are additional tenses
+  const hasAdditionalTenses = additionalTenseOrder.some(tense => data[tense]);
+  
+  if (hasAdditionalTenses) {
+    // Container for additional tenses (hidden by default)
+    const additionalContainer = document.createElement("div");
+    additionalContainer.className = "tenses-container additional-tenses";
+    additionalContainer.style.display = "none";
+    
+    additionalTenseOrder.forEach(tense => {
+      if (!data[tense]) return;
+      
+      // Handle special forms (participles, infinitives)
+      if (specialForms.includes(tense)) {
+        const table = createSpecialFormTable(tense, data[tense]);
+        additionalContainer.appendChild(table);
+      } else {
+        const table = createTenseTable(tense, data[tense]);
+        additionalContainer.appendChild(table);
+      }
+    });
+    
+    result.appendChild(additionalContainer);
+    
+    // Add "Show More Tenses" button
+    const toggleButton = document.createElement("button");
+    toggleButton.className = "toggle-tenses-btn";
+    toggleButton.innerHTML = `
+      <span class="btn-text-show">Show More Tenses</span>
+      <span class="btn-text-hide" style="display: none;">Show Less</span>
+      <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 10.5l-4-4h8l-4 4z"/>
+      </svg>
+    `;
+    
+    toggleButton.addEventListener("click", () => {
+      const isHidden = additionalContainer.style.display === "none";
+      additionalContainer.style.display = isHidden ? "block" : "none";
+      toggleButton.querySelector(".btn-text-show").style.display = isHidden ? "none" : "inline";
+      toggleButton.querySelector(".btn-text-hide").style.display = isHidden ? "inline" : "none";
+      toggleButton.classList.toggle("expanded", isHidden);
+      
+      // Toggle 3rd person imperative rows
+      const thirdPersonRows = result.querySelectorAll('.imperative-third-person');
+      thirdPersonRows.forEach(row => {
+        row.style.display = isHidden ? 'table-row' : 'none';
+      });
+    });
+    
+    result.appendChild(toggleButton);
+  }
+}
+
+// Helper function to extract English name from tense name
+function getEnglishTenseName(tenseName) {
+  const match = tenseName.match(/\(([^)]+)\)/);
+  return match ? match[1] : tenseName;
+}
+
+// Helper function to create a tense table
+function createTenseTable(tenseName, tenseData) {
+  const table = document.createElement("table");
+  const tenseClass = tenseClasses[tenseName] || "";
+  table.className = tenseClass;
+  
+  const caption = document.createElement("caption");
+  caption.textContent = getEnglishTenseName(tenseName);
+  table.appendChild(caption);
+
+  for (const person in tenseData) {
+    const row = table.insertRow();
+    row.insertCell().textContent = person;
+    row.insertCell().textContent = tenseData[person];
+  }
+
+  return table;
+}
+
+// Helper function to create combined imperative table
+function createCombinedImperativeTable(imperativeData) {
+  const table = document.createElement("table");
+  table.className = tenseClasses["Προστακτική (Imperative)"] || "tense-imperative";
+  
+  const caption = document.createElement("caption");
+  caption.textContent = "Imperative";
+  table.appendChild(caption);
+
+  // Get the two imperative types
+  const simpleImperative = imperativeData['Προστακτική Στιγμιαία (Simple Imperative)'];
+  const contImperative = imperativeData['Προστακτική Εξακολουθητική (Cont. Imperative)'];
+  
+  // Create header row
+  const headerRow = table.insertRow();
+  headerRow.insertCell(); // Empty cell for person label
+  if (simpleImperative) {
+    const simpleHeader = headerRow.insertCell();
+    simpleHeader.textContent = "Simple";
+    simpleHeader.className = "imperative-header";
+  }
+  if (contImperative) {
+    const contHeader = headerRow.insertCell();
+    contHeader.textContent = "Continuous";
+    contHeader.className = "imperative-header";
+  }
+
+  // Get all persons (from whichever imperative exists)
+  const persons = Object.keys(simpleImperative || contImperative);
+  
+  // Create rows for each person
+  persons.forEach((person, index) => {
+    const row = table.insertRow();
+    
+    // Add class to 3rd person rows (index 1 and 3)
+    if (person === 'αυτός/ή/ό' || person === 'αυτοί/ές/ά') {
+      row.className = 'imperative-third-person';
+    }
+    
+    row.insertCell().textContent = person;
+    
+    if (simpleImperative) {
+      row.insertCell().textContent = simpleImperative[person] || '—';
+    }
+    if (contImperative) {
+      row.insertCell().textContent = contImperative[person] || '—';
+    }
+  });
+
+  return table;
+}
+
+// Helper function to create special form table (participle, infinitive)
+function createSpecialFormTable(tenseName, tenseData) {
+  const table = document.createElement("table");
+  const tenseClass = tenseClasses[tenseName] || "";
+  table.className = `${tenseClass} special-form`;
+  
+  const caption = document.createElement("caption");
+  caption.textContent = getEnglishTenseName(tenseName);
+  table.appendChild(caption);
+
+  const row = table.insertRow();
+  const cell = row.insertCell();
+  cell.textContent = tenseData.form || tenseData;
+  cell.colSpan = 2; // Make it span the full width
+
+  return table;
 }
 
 // Alphabetical List Page
@@ -488,224 +668,3 @@ function selectVerb(verb) {
   // Scroll to top on mobile
   window.scrollTo(0, 0);
 }
-
-// =====================================================
-// FLASH CARDS
-// =====================================================
-
-let flashcardState = {
-  cards: [],
-  missedCards: [],
-  currentIndex: 0,
-  correct: 0,
-  wrong: 0,
-  completed: false,
-  isPracticeMode: false
-};
-
-function initFlashcards() {
-  // Reset state
-  flashcardState = {
-    cards: [],
-    missedCards: [],
-    currentIndex: 0,
-    correct: 0,
-    wrong: 0,
-    completed: false,
-    isPracticeMode: false
-  };
-  
-  // Get 20 random verbs from available verbs
-  const availableVerbs = verbList.filter(v => verbs[v] !== undefined);
-  const shuffled = [...availableVerbs].sort(() => Math.random() - 0.5);
-  flashcardState.cards = shuffled.slice(0, 20);
-  
-  renderFlashcards();
-  updateFlashcardStats();
-  updateFlashcardProgress();
-}
-
-function practiceMissedCards() {
-  if (flashcardState.missedCards.length === 0) return;
-  
-  // Set up practice mode with missed cards
-  flashcardState.cards = [...flashcardState.missedCards];
-  flashcardState.missedCards = [];
-  flashcardState.currentIndex = 0;
-  flashcardState.correct = 0;
-  flashcardState.wrong = 0;
-  flashcardState.completed = false;
-  flashcardState.isPracticeMode = true;
-  
-  renderFlashcards();
-  updateFlashcardStats();
-  updateFlashcardProgress();
-}
-
-function renderFlashcards() {
-  const track = document.getElementById('flashcardTrack');
-  if (!track) return;
-  
-  track.innerHTML = flashcardState.cards.map((verb, index) => `
-    <div class="flashcard" data-index="${index}">
-      <div class="flashcard-inner">
-        <div class="flashcard-face flashcard-front" onclick="flipCard(${index})">
-          <div class="flashcard-verb">${verb}</div>
-          <div class="flashcard-hint">What does this mean?</div>
-          <div class="flashcard-tap">Tap to reveal</div>
-        </div>
-        <div class="flashcard-face flashcard-back" onclick="flipCard(${index})">
-          <div class="flashcard-meaning">${verbs[verb].meaning}</div>
-          <div class="flashcard-tap">Tap to flip back</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-  
-  // Reset position
-  track.style.transform = 'translateX(0)';
-}
-
-function flipCard(index) {
-  const cards = document.querySelectorAll('.flashcard');
-  if (cards[index]) {
-    cards[index].classList.toggle('flipped');
-  }
-}
-
-function goToCard(index) {
-  const track = document.getElementById('flashcardTrack');
-  if (!track) return;
-  
-  flashcardState.currentIndex = index;
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
-
-function markCard(isCorrect) {
-  if (flashcardState.completed) return;
-  
-  const currentCard = document.querySelectorAll('.flashcard')[flashcardState.currentIndex];
-  const currentVerb = flashcardState.cards[flashcardState.currentIndex];
-  
-  if (isCorrect) {
-    flashcardState.correct++;
-    currentCard?.classList.add('swipe-right');
-  } else {
-    flashcardState.wrong++;
-    flashcardState.missedCards.push(currentVerb); // Track missed card
-    currentCard?.classList.add('swipe-left');
-  }
-  
-  updateFlashcardStats();
-  updateFlashcardProgress();
-  
-  // Move to next card after animation
-  setTimeout(() => {
-    if (flashcardState.currentIndex < flashcardState.cards.length - 1) {
-      flashcardState.currentIndex++;
-      goToCard(flashcardState.currentIndex);
-    } else {
-      // All cards completed
-      showFlashcardComplete();
-    }
-  }, 300);
-}
-
-function updateFlashcardStats() {
-  const correctEl = document.getElementById('correctCount');
-  const wrongEl = document.getElementById('wrongCount');
-  const remainingEl = document.getElementById('remainingCount');
-  
-  if (correctEl) correctEl.textContent = flashcardState.correct;
-  if (wrongEl) wrongEl.textContent = flashcardState.wrong;
-  if (remainingEl) {
-    const remaining = flashcardState.cards.length - flashcardState.correct - flashcardState.wrong;
-    remainingEl.textContent = remaining;
-  }
-}
-
-function updateFlashcardProgress() {
-  const progressBar = document.getElementById('progressBar');
-  if (!progressBar) return;
-  
-  const total = flashcardState.cards.length;
-  const completed = flashcardState.correct + flashcardState.wrong;
-  const percentage = (completed / total) * 100;
-  progressBar.style.width = `${percentage}%`;
-}
-
-function showFlashcardComplete() {
-  flashcardState.completed = true;
-  
-  const track = document.getElementById('flashcardTrack');
-  if (!track) return;
-  
-  const percentage = Math.round((flashcardState.correct / flashcardState.cards.length) * 100);
-  let emoji = '🎉';
-  let message = 'Great job!';
-  
-  if (percentage === 100) {
-    emoji = '🏆';
-    message = 'Perfect Score!';
-  } else if (percentage >= 80) {
-    emoji = '🌟';
-    message = 'Excellent!';
-  } else if (percentage >= 60) {
-    emoji = '👍';
-    message = 'Good work!';
-  } else if (percentage < 40) {
-    emoji = '💪';
-    message = 'Keep practicing!';
-  }
-  
-  // Build practice missed button if there are missed cards
-  let practiceButton = '';
-  if (flashcardState.missedCards.length > 0) {
-    practiceButton = `
-      <button class="fc-practice-missed" onclick="practiceMissedCards()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 2v6h-6"></path>
-          <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
-          <path d="M3 22v-6h6"></path>
-          <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
-        </svg>
-        Practice ${flashcardState.missedCards.length} Missed Card${flashcardState.missedCards.length > 1 ? 's' : ''}
-      </button>
-    `;
-  }
-  
-  // Show different message if this was practice mode and they got 100%
-  let celebrationMessage = '';
-  if (flashcardState.isPracticeMode && percentage === 100) {
-    celebrationMessage = `<div class="mastery-message">🎊 You've mastered all the cards! 🎊</div>`;
-  }
-  
-  track.innerHTML = `
-    <div class="flashcard" style="flex: 0 0 100%; min-width: 100%;">
-      <div class="flashcard-complete">
-        <div class="emoji">${emoji}</div>
-        <h2>${message}</h2>
-        <div class="score">
-          You got <strong>${flashcardState.correct}</strong> out of <strong>${flashcardState.cards.length}</strong> correct
-          <br>(${percentage}%)
-        </div>
-        ${celebrationMessage}
-        ${practiceButton}
-      </div>
-    </div>
-  `;
-  track.style.transform = 'translateX(0)';
-}
-
-// Flash card button event listeners
-document.addEventListener('DOMContentLoaded', () => {
-  const btnCorrect = document.getElementById('btnCorrect');
-  const btnWrong = document.getElementById('btnWrong');
-  const btnFlip = document.getElementById('btnFlip');
-  const btnRestart = document.getElementById('btnRestart');
-  
-  if (btnCorrect) btnCorrect.addEventListener('click', () => markCard(true));
-  if (btnWrong) btnWrong.addEventListener('click', () => markCard(false));
-  if (btnFlip) btnFlip.addEventListener('click', () => flipCard(flashcardState.currentIndex));
-  if (btnRestart) btnRestart.addEventListener('click', initFlashcards);
-});
