@@ -342,6 +342,29 @@ const tenseClasses = {
   "Συντελεσμένος Μέλλοντας (Future Perfect)": "tense-future-perfect"
 };
 
+// Default tenses to show (in order)
+const defaultTenseOrder = [
+  'Ενεστώτας (Present)',
+  'Μέλλοντας Στιγμιαίος (Simple Future)',
+  'Αόριστος (Simple Past)',
+  'Παρατατικός (Continuous Past)',
+  'Προστακτική Στιγμιαία (Simple Imperative)',
+  'Προστακτική Εξακολουθητική (Cont. Imperative)'
+];
+
+// Additional tenses to show when "Show More" is clicked
+const additionalTenseOrder = [
+  'Μέλλοντας Εξακολουθητικός (Continuous Future)',
+  'Υποτακτική Ενεστώτα (Present Subjunctive)',
+  'Υποτακτική Αορίστου (Past Subjunctive)',
+  'Παρακείμενος (Present Perfect)',
+  'Υπερσυντέλικος (Past Perfect)',
+  'Υποτακτική Παρακειμένου (Perfect Subjunctive)',
+  'Συντελεσμένος Μέλλοντας (Future Perfect)',
+  'Μετοχή Ενεστώτα (Present Participle)',
+  'Απαρέμφατο (Simple Infinitive)'
+];
+
 // Imperative tense names that should be combined
 const imperativeTenses = [
   'Προστακτική Στιγμιαία (Simple Imperative)',
