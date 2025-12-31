@@ -362,69 +362,69 @@ table {
 }
 
 caption {
-  color: white;
+  color: #000;
   padding: 0.75rem 1rem;
   font-weight: 700;
   font-size: 1.1rem;
   background: #667eea; /* Default fallback */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: none;
 }
 
-/* Greek Heritage Color Palette - Inspired by Greek flag 🇬🇷 and Mediterranean */
+/* Soft Pastel Color Palette */
 .tense-present caption {
-  background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+  background: #C8E6C9; /* Sage */
 }
 
 .tense-simple-future caption {
-  background: linear-gradient(135deg, #4a69bd 0%, #6a89cc 100%);
+  background: #81D4FA; /* Sky */
 }
 
 .tense-aorist caption {
-  background: linear-gradient(135deg, #e55039 0%, #fa983a 100%);
+  background: #FFAB91; /* Coral */
 }
 
 .tense-continuous-future caption {
-  background: linear-gradient(135deg, #4a69bd 0%, #82ccdd 100%);
+  background: #FFCDD2; /* Rose */
 }
 
 .tense-continuous-past caption {
-  background: linear-gradient(135deg, #eb3b5a 0%, #fc5c65 100%);
+  background: #80CBC4; /* Mint */
 }
 
 .tense-imperative caption {
-  background: linear-gradient(135deg, #0c2461 0%, #3c6382 100%);
+  background: #E6EE9C; /* Lime */
 }
 
 .tense-subjunctive caption {
-  background: linear-gradient(135deg, #079992 0%, #38ada9 100%);
+  background: #4DD0E1; /* Aqua */
 }
 
 .tense-participle caption {
-  background: linear-gradient(135deg, #1e3799 0%, #4a69bd 100%);
+  background: #FFF59D; /* Lemon */
 }
 
 .tense-perfect caption {
-  background: linear-gradient(135deg, #f39c12 0%, #f8c291 100%);
+  background: #FFCC80; /* Peach */
 }
 
 .tense-past-subjunctive caption {
-  background: linear-gradient(135deg, #079992 0%, #60a3bc 100%);
+  background: #9FA8DA; /* Cornflower */
 }
 
 .tense-infinitive caption {
-  background: linear-gradient(135deg, #e55039 0%, #f39c12 100%);
+  background: #CE93D8; /* Lavender */
 }
 
 .tense-past-perfect caption {
-  background: linear-gradient(135deg, #3c6382 0%, #60a3bc 100%);
+  background: #F48FB1; /* Orchid */
 }
 
 .tense-perfect-subjunctive caption {
-  background: linear-gradient(135deg, #38ada9 0%, #78e08f 100%);
+  background: #D7CCC8; /* Sand */
 }
 
 .tense-future-perfect caption {
-  background: linear-gradient(135deg, #f8c291 0%, #fad390 100%);
+  background: #B0BEC5; /* Slate */
 }
 
 td {
