@@ -2,27 +2,86 @@
 // Verb list will be initialized when DOM loads
 let verbList = [];
 let conjugatedFormsMap = {}; // Reverse lookup: conjugated form -> base verb
+let englishToGreekMap = {}; // Reverse lookup: English word -> Greek verbs
 
 // Alternative verb forms (α-contract verbs with two accepted forms)
 const alternativeVerbForms = {
   "αγαπώ": "αγαπάω",
   "απαντώ": "απαντάω",
+  "αποχτώ": "αποχτάω",
+  "βαστώ": "βαστάω",
+  "βογκώ": "βογκάω",
   "βοηθώ": "βοηθάω",
+  "βουτώ": "βουτάω",
   "γελώ": "γελάω",
   "γεννώ": "γεννάω",
+  "γερνώ": "γερνάω",
+  "γλεντώ": "γλεντάω",
+  "γλιστρώ": "γλιστράω",
+  "γυρνώ": "γυρνάω",
+  "δαπανώ": "δαπανάω",
   "διψώ": "διψάω",
+  "δυσφημώ": "δυσφημάω",
+  "εκτιμώ": "εκτιμάω",
   "ζητώ": "ζητάω",
+  "θαρρώ": "θαρράω",
+  "καθυστερώ": "καθυστεράω",
+  "κατακτώ": "κατακτάω",
+  "κεντώ": "κεντάω",
+  "κερνώ": "κερνάω",
+  "κλωτσώ": "κλωτσάω",
   "κολυμπώ": "κολυμπάω",
+  "κουβαλώ": "κουβαλάω",
+  "κουνώ": "κουνάω",
   "κρατώ": "κρατάω",
+  "κρεμώ": "κρεμάω",
+  "κυβερνώ": "κυβερνάω",
+  "κυνηγώ": "κυνηγάω",
+  "λυπώ": "λυπάω",
+  "μαρτυρώ": "μαρτυράω",
+  "μασώ": "μασάω",
+  "μεθώ": "μεθάω",
+  "μελετώ": "μελετάω",
+  "μετρώ": "μετράω",
   "μιλώ": "μιλάω",
   "νικώ": "νικάω",
+  "ξεκινώ": "ξεκινάω",
+  "ξεχνώ": "ξεχνάω",
+  "ξυπνώ": "ξυπνάω",
+  "ορμώ": "ορμάω",
+  "παραπατώ": "παραπατάω",
+  "παρατώ": "παρατάω",
+  "πατώ": "πατάω",
   "πεινώ": "πεινάω",
   "περνώ": "περνάω",
+  "περπατώ": "περπατάω",
   "πετώ": "πετάω",
+  "πηδώ": "πηδάω",
+  "πολεμώ": "πολεμάω",
+  "πονώ": "πονάω",
+  "πουλώ": "πουλάω",
+  "προτιμώ": "προτιμάω",
+  "ρουφώ": "ρουφάω",
   "ρωτώ": "ρωτάω",
+  "σπαταλώ": "σπαταλάω",
   "σταματώ": "σταματάω",
+  "συζητώ": "συζητάω",
+  "συκοφαντώ": "συκοφαντάω",
+  "συναντώ": "συναντάω",
+  "τιμώ": "τιμάω",
+  "τολμώ": "τολμάω",
+  "τραβώ": "τραβάω",
   "τραγουδώ": "τραγουδάω",
-  "χτυπώ": "χτυπάω"
+  "τρυπώ": "τρυπάω",
+  "τσιμπώ": "τσιμπάω",
+  "φιλώ": "φιλάω",
+  "φορώ": "φοράω",
+  "φυσώ": "φυσάω",
+  "χαιρετώ": "χαιρετάω",
+  "χαλώ": "χαλάω",
+  "χρωστώ": "χρωστάω",
+  "χτυπώ": "χτυπάω",
+  "χωρώ": "χωράω"
 };
 
 // Helper function to get verb display name with alternative form
@@ -196,6 +255,48 @@ function addFormToMap(form, baseVerb) {
   conjugatedFormsMap[formLatin] = baseVerb;              // Latin transliteration
 }
 
+// Build reverse lookup map for English translations
+function buildEnglishToGreekMap() {
+  englishToGreekMap = {};
+  
+  verbList.forEach(greekVerb => {
+    const verbData = verbs[greekVerb];
+    if (!verbData.meaning) return;
+    
+    // Split by comma and process each English translation
+    const englishTranslations = verbData.meaning.toLowerCase().split(',');
+    
+    englishTranslations.forEach(translation => {
+      // Clean up the translation (trim whitespace)
+      translation = translation.trim();
+      
+      // Extract individual words from the translation
+      // Remove "to " prefix if present
+      const cleanTranslation = translation.replace(/^to\s+/, '');
+      
+      // Store both the full phrase and individual words
+      if (!englishToGreekMap[cleanTranslation]) {
+        englishToGreekMap[cleanTranslation] = [];
+      }
+      if (!englishToGreekMap[cleanTranslation].includes(greekVerb)) {
+        englishToGreekMap[cleanTranslation].push(greekVerb);
+      }
+      
+      // Also index by the full translation with "to" if it was present
+      if (translation !== cleanTranslation) {
+        if (!englishToGreekMap[translation]) {
+          englishToGreekMap[translation] = [];
+        }
+        if (!englishToGreekMap[translation].includes(greekVerb)) {
+          englishToGreekMap[translation].push(greekVerb);
+        }
+      }
+    });
+  });
+  
+  console.log(`Built English-to-Greek map with ${Object.keys(englishToGreekMap).length} entries`);
+}
+
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize verb list from loaded database
@@ -203,6 +304,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Build reverse lookup map for conjugated forms
   buildConjugatedFormsMap();
+  
+  // Build English-to-Greek translation map
+  buildEnglishToGreekMap();
   
   // Get DOM elements
   input = document.getElementById("verbInput");
@@ -433,24 +537,41 @@ function setupSearch() {
     }
     
     // Check if input is Latin characters (not Greek)
-    const isLatinInput = /^[a-z]+$/.test(query);
+    const isLatinInput = /^[a-z\s]+$/.test(query);
     
     // Check if the query is a conjugated form (exact, without accents, or Latin)
     let baseVerbFromConjugated = conjugatedFormsMap[query];
     
-    // Match verbs with or without accents, or via Latin transliteration
-    const matches = verbList.filter(v => {
+    // First, try to match Greek verbs (transliterated or with accents)
+    let matches = verbList.filter(v => {
       const verbNoAccents = removeGreekAccents(v.toLowerCase());
       
-      if (isLatinInput) {
-        // Convert Greek verb to Latin and compare
+      if (isLatinInput && !query.includes(' ')) {
+        // Convert Greek verb to Latin and compare (only for single words)
         const verbLatin = greekToLatin(v);
         return verbLatin.startsWith(query);
-      } else {
+      } else if (!isLatinInput) {
         // Greek input - match with or without accents
         return verbNoAccents.startsWith(queryNoAccents);
       }
+      return false;
     });
+    
+    // If no Greek matches and input is Latin, search English translations
+    let englishMatches = [];
+    if (isLatinInput && matches.length === 0) {
+      // Search for English translations that start with or contain the query
+      for (const [englishWord, greekVerbs] of Object.entries(englishToGreekMap)) {
+        if (englishWord.startsWith(query) || englishWord.includes(query)) {
+          greekVerbs.forEach(verb => {
+            if (!englishMatches.includes(verb)) {
+              englishMatches.push(verb);
+            }
+          });
+        }
+      }
+      matches = englishMatches;
+    }
     
     // If a conjugated form is found, add it to the top of suggestions
     if (baseVerbFromConjugated && !matches.includes(baseVerbFromConjugated)) {
@@ -514,6 +635,21 @@ function setupSearch() {
         input.value = baseVerb;
         showVerb(baseVerb);
       } else {
+        // Check if it's an English search
+        const isLatinInput = /^[a-z\s]+$/.test(verbLower);
+        if (isLatinInput) {
+          // Try to find English translation match
+          for (const [englishWord, greekVerbs] of Object.entries(englishToGreekMap)) {
+            if (englishWord === verbLower || englishWord.startsWith(verbLower)) {
+              if (greekVerbs.length > 0) {
+                // Show the first matching Greek verb
+                input.value = greekVerbs[0];
+                showVerb(greekVerbs[0]);
+                return;
+              }
+            }
+          }
+        }
         showVerb(verb);
       }
     }

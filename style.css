@@ -585,6 +585,7 @@ td:last-child {
 table.tense-imperative td:nth-child(2),
 table.tense-imperative td:nth-child(3) {
   width: 30%;
+  font-weight: 500;
 }
 
 /* Special Form Tables (Participle, Infinitive) */
