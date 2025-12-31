@@ -83,12 +83,71 @@
         <p class="subtitle">Type a Greek verb to see its conjugations</p>
         
         <div class="search-container">
-          <input
-            id="verbInput"
-            type="text"
-            placeholder="π.χ. είμαι, έχω, κάνω, πάω..."
-            autocomplete="off"
-          />
+          <div class="input-wrapper">
+            <input
+              id="verbInput"
+              type="text"
+              placeholder="π.χ. είμαι, έχω, κάνω, πάω..."
+              autocomplete="off"
+            />
+            <button id="keyboardToggle" class="keyboard-toggle" title="Greek Keyboard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M6 8h.01"></path>
+                <path d="M10 8h.01"></path>
+                <path d="M14 8h.01"></path>
+                <path d="M18 8h.01"></path>
+                <path d="M8 12h.01"></path>
+                <path d="M12 12h.01"></path>
+                <path d="M16 12h.01"></path>
+                <path d="M7 16h10"></path>
+              </svg>
+            </button>
+          </div>
+          <div id="greekKeyboard" class="greek-keyboard">
+            <div class="keyboard-row">
+              <button class="key">;</button>
+              <button class="key">ς</button>
+              <button class="key">ε</button>
+              <button class="key">ρ</button>
+              <button class="key">τ</button>
+              <button class="key">υ</button>
+              <button class="key">θ</button>
+              <button class="key">ι</button>
+              <button class="key">ο</button>
+              <button class="key">π</button>
+            </div>
+            <div class="keyboard-row">
+              <button class="key">α</button>
+              <button class="key">σ</button>
+              <button class="key">δ</button>
+              <button class="key">φ</button>
+              <button class="key">γ</button>
+              <button class="key">η</button>
+              <button class="key">ξ</button>
+              <button class="key">κ</button>
+              <button class="key">λ</button>
+            </div>
+            <div class="keyboard-row">
+              <button class="key">ζ</button>
+              <button class="key">χ</button>
+              <button class="key">ψ</button>
+              <button class="key">ω</button>
+              <button class="key">β</button>
+              <button class="key">ν</button>
+              <button class="key">μ</button>
+            </div>
+            <div class="keyboard-row">
+              <button class="key key-accent">ά</button>
+              <button class="key key-accent">έ</button>
+              <button class="key key-accent">ή</button>
+              <button class="key key-accent">ί</button>
+              <button class="key key-accent">ό</button>
+              <button class="key key-accent">ύ</button>
+              <button class="key key-accent">ώ</button>
+              <button class="key key-backspace" data-action="backspace" title="Backspace">⌫</button>
+            </div>
+          </div>
           <div id="suggestions"></div>
         </div>
 

@@ -183,6 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup search functionality
   setupSearch();
   
+  // Setup Greek keyboard
+  setupGreekKeyboard();
+  
   // Setup mobile menu
   setupMobileMenu();
   
@@ -290,6 +293,61 @@ function setupMobileMenu() {
         sidebar.classList.remove('open');
         menuToggle.classList.remove('open');
       }
+    }
+  });
+}
+
+// Greek keyboard setup function
+function setupGreekKeyboard() {
+  const keyboardToggle = document.getElementById('keyboardToggle');
+  const greekKeyboard = document.getElementById('greekKeyboard');
+  const keys = document.querySelectorAll('.key');
+  
+  if (!keyboardToggle || !greekKeyboard) return;
+  
+  // Toggle keyboard visibility
+  keyboardToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    greekKeyboard.classList.toggle('active');
+    keyboardToggle.classList.toggle('active');
+  });
+  
+  // Handle key clicks
+  keys.forEach(key => {
+    key.addEventListener('click', (e) => {
+      e.preventDefault();
+      const action = key.dataset.action;
+      
+      if (action === 'backspace') {
+        // Remove last character
+        input.value = input.value.slice(0, -1);
+      } else {
+        // Insert character at cursor position
+        const cursorPos = input.selectionStart;
+        const textBefore = input.value.substring(0, cursorPos);
+        const textAfter = input.value.substring(cursorPos);
+        const letter = key.textContent;
+        
+        input.value = textBefore + letter + textAfter;
+        
+        // Move cursor after inserted character
+        const newPos = cursorPos + letter.length;
+        input.setSelectionRange(newPos, newPos);
+      }
+      
+      // Focus input and trigger input event for search
+      input.focus();
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  });
+  
+  // Close keyboard when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!greekKeyboard.contains(e.target) && 
+        !keyboardToggle.contains(e.target) && 
+        !input.contains(e.target)) {
+      greekKeyboard.classList.remove('active');
+      keyboardToggle.classList.remove('active');
     }
   });
 }
