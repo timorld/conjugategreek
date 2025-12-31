@@ -1,6 +1,7 @@
 // Verbs are loaded from verbs-new-database.js
 // Verb list will be initialized when DOM loads
 let verbList = [];
+let conjugatedFormsMap = {}; // Reverse lookup: conjugated form -> base verb
 
 // 100 Essential Greek Verbs List
 const essentialVerbs = [
@@ -113,10 +114,61 @@ let currentPage = 'search';
 // DOM Elements
 let input, result, suggestions, sidebar, menuToggle;
 
+// Build reverse lookup map for conjugated forms
+function buildConjugatedFormsMap() {
+  conjugatedFormsMap = {};
+  
+  verbList.forEach(baseVerb => {
+    const verbData = verbs[baseVerb];
+    
+    // Loop through all tenses
+    for (const tense in verbData) {
+      if (tense === 'meaning' || tense === 'voice') continue;
+      
+      const tenseData = verbData[tense];
+      
+      // Handle special forms (participle, infinitive) that are strings or objects
+      if (typeof tenseData === 'string') {
+        addFormToMap(tenseData, baseVerb);
+      } else if (tenseData && typeof tenseData === 'object') {
+        // Handle forms with .form property
+        if (tenseData.form) {
+          addFormToMap(tenseData.form, baseVerb);
+        } else {
+          // Handle regular conjugations (person: form)
+          for (const person in tenseData) {
+            const form = tenseData[person];
+            if (form && typeof form === 'string') {
+              addFormToMap(form, baseVerb);
+            }
+          }
+        }
+      }
+    }
+  });
+  
+  console.log(`Built reverse lookup map with ${Object.keys(conjugatedFormsMap).length} entries`);
+}
+
+// Helper function to add a conjugated form with multiple variations
+function addFormToMap(form, baseVerb) {
+  const formLower = form.toLowerCase();
+  const formNoAccents = removeGreekAccents(formLower);
+  const formLatin = greekToLatin(form);
+  
+  // Store all variations
+  conjugatedFormsMap[formLower] = baseVerb;              // Original with accents
+  conjugatedFormsMap[formNoAccents] = baseVerb;          // Without accents
+  conjugatedFormsMap[formLatin] = baseVerb;              // Latin transliteration
+}
+
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize verb list from loaded database
   verbList = Object.keys(verbs);
+  
+  // Build reverse lookup map for conjugated forms
+  buildConjugatedFormsMap();
   
   // Get DOM elements
   input = document.getElementById("verbInput");
@@ -291,6 +343,9 @@ function setupSearch() {
     // Check if input is Latin characters (not Greek)
     const isLatinInput = /^[a-z]+$/.test(query);
     
+    // Check if the query is a conjugated form (exact, without accents, or Latin)
+    let baseVerbFromConjugated = conjugatedFormsMap[query];
+    
     // Match verbs with or without accents, or via Latin transliteration
     const matches = verbList.filter(v => {
       const verbNoAccents = removeGreekAccents(v.toLowerCase());
@@ -304,6 +359,19 @@ function setupSearch() {
         return verbNoAccents.startsWith(queryNoAccents);
       }
     });
+    
+    // If a conjugated form is found, add it to the top of suggestions
+    if (baseVerbFromConjugated && !matches.includes(baseVerbFromConjugated)) {
+      const div = document.createElement("div");
+      div.className = "suggestion suggestion-conjugated";
+      div.innerHTML = `<strong>${baseVerbFromConjugated}</strong> — ${verbs[baseVerbFromConjugated].meaning} <span style="opacity: 0.7; font-size: 0.85em;">(found: ${query})</span>`;
+      div.addEventListener("click", () => {
+        input.value = baseVerbFromConjugated;
+        suggestions.innerHTML = "";
+        showVerb(baseVerbFromConjugated);
+      });
+      suggestions.appendChild(div);
+    }
     
     matches.slice(0, 5).forEach(verb => {
       const div = document.createElement("div");
@@ -333,6 +401,9 @@ function setupSearch() {
       
       if (exactMatch) {
         showVerb(exactMatch);
+      } else if (baseVerbFromConjugated) {
+        // If conjugated form is found, show the base verb
+        showVerb(baseVerbFromConjugated);
       } else {
         result.innerHTML = "";
       }
@@ -342,8 +413,17 @@ function setupSearch() {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const verb = input.value.trim();
+      const verbLower = verb.toLowerCase();
       suggestions.innerHTML = "";
-      showVerb(verb);
+      
+      // Check if it's a conjugated form (works with accents, without accents, and Latin)
+      const baseVerb = conjugatedFormsMap[verbLower];
+      if (baseVerb) {
+        input.value = baseVerb;
+        showVerb(baseVerb);
+      } else {
+        showVerb(verb);
+      }
     }
   });
 

@@ -309,6 +309,15 @@ input::placeholder {
   border-bottom: none;
 }
 
+.suggestion-conjugated {
+  background: #f0f8ff;
+  border-left: 3px solid #4DD0E1;
+}
+
+.suggestion-conjugated:hover {
+  background: #e6f4ff;
+}
+
 /* Verb Header */
 .verb-header {
   text-align: center;
