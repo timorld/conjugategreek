@@ -3,6 +3,34 @@
 let verbList = [];
 let conjugatedFormsMap = {}; // Reverse lookup: conjugated form -> base verb
 
+// Alternative verb forms (α-contract verbs with two accepted forms)
+const alternativeVerbForms = {
+  "αγαπώ": "αγαπάω",
+  "απαντώ": "απαντάω",
+  "βοηθώ": "βοηθάω",
+  "γελώ": "γελάω",
+  "γεννώ": "γεννάω",
+  "διψώ": "διψάω",
+  "ζητώ": "ζητάω",
+  "κολυμπώ": "κολυμπάω",
+  "κρατώ": "κρατάω",
+  "μιλώ": "μιλάω",
+  "νικώ": "νικάω",
+  "πεινώ": "πεινάω",
+  "περνώ": "περνάω",
+  "πετώ": "πετάω",
+  "ρωτώ": "ρωτάω",
+  "σταματώ": "σταματάω",
+  "τραγουδώ": "τραγουδάω",
+  "χτυπώ": "χτυπάω"
+};
+
+// Helper function to get verb display name with alternative form
+function getVerbDisplayName(verb) {
+  const alternative = alternativeVerbForms[verb];
+  return alternative ? `${verb} / ${alternative}` : verb;
+}
+
 // 100 Essential Greek Verbs List
 const essentialVerbs = [
   {verb: "είμαι", meaning: "to be"},
@@ -120,6 +148,12 @@ function buildConjugatedFormsMap() {
   
   verbList.forEach(baseVerb => {
     const verbData = verbs[baseVerb];
+    
+    // Add alternative verb form to map if it exists
+    if (alternativeVerbForms[baseVerb]) {
+      const altForm = alternativeVerbForms[baseVerb];
+      addFormToMap(altForm, baseVerb);
+    }
     
     // Loop through all tenses
     for (const tense in verbData) {
@@ -434,7 +468,7 @@ function setupSearch() {
     matches.slice(0, 5).forEach(verb => {
       const div = document.createElement("div");
       div.className = "suggestion";
-      div.textContent = `${verb} — ${verbs[verb].meaning}`;
+      div.textContent = `${getVerbDisplayName(verb)} — ${verbs[verb].meaning}`;
       div.addEventListener("click", () => {
         input.value = verb;
         suggestions.innerHTML = "";
@@ -558,7 +592,7 @@ function showVerb(verb) {
   // Create header with verb name and meaning
   const header = document.createElement("div");
   header.className = "verb-header";
-  let headerHTML = `<h2>${verb}</h2><span class="meaning">${data.meaning}</span>`;
+  let headerHTML = `<h2>${getVerbDisplayName(verb)}</h2><span class="meaning">${data.meaning}</span>`;
   
   // Add voice badge if available
   if (data.voice) {
@@ -774,7 +808,7 @@ function renderAlphabeticalList() {
     
     groups[letter].forEach(verb => {
       html += `<div class="verb-card" onclick="selectVerb('${verb}')">
-        <div class="verb-name">${verb}</div>
+        <div class="verb-name">${getVerbDisplayName(verb)}</div>
         <div class="verb-meaning">${verbs[verb].meaning}</div>
       </div>`;
     });
@@ -829,7 +863,7 @@ function renderEssentialList() {
                    ${available ? `onclick="selectVerb('${item.verb}')"` : ''}>
         <span class="rank">${globalIdx}</span>
         <div class="verb-info">
-          <div class="verb-name">${item.verb}</div>
+          <div class="verb-name">${getVerbDisplayName(item.verb)}</div>
           <div class="verb-meaning">${item.meaning}</div>
         </div>
       </div>`;
