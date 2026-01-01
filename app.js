@@ -24,7 +24,6 @@ const alternativeVerbForms = {
   "δυσφημώ": "δυσφημάω",
   "εκτιμώ": "εκτιμάω",
   "ζητώ": "ζητάω",
-  "θαρρώ": "θαρράω",
   "καθυστερώ": "καθυστεράω",
   "κατακτώ": "κατακτάω",
   "κεντώ": "κεντάω",
@@ -331,6 +330,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.innerWidth <= 768) {
     menuToggle.classList.add('glow-animation');
   }
+  
+  // Hide loading indicator once everything is ready
+  setTimeout(() => {
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    if (loadingIndicator) {
+      loadingIndicator.classList.add('hidden');
+    }
+  }, 100); // Small delay to ensure everything is rendered
 });
 
 // Setup navigation
@@ -1109,7 +1116,8 @@ function generateFlashcardDeck(retryWrongOnly = false, verbsToRetry = []) {
   const deckSize = retryWrongOnly ? shuffled.length : Math.min(20, shuffled.length);
   
   flashcardDeck = shuffled.slice(0, deckSize).map(verb => ({
-    verb: verb,
+    verb: getVerbDisplayName(verb),
+    baseVerb: verb, // Store base verb for conjugation lookup
     meaning: verbs[verb].meaning,
     answered: false
   }));
@@ -1147,11 +1155,29 @@ function renderFlashcards() {
       <div class="flashcard-inner">
         <div class="flashcard-front">
           <div class="card-number">${index + 1} / ${flashcardDeck.length}</div>
+          <button class="card-view-conjugation" data-verb="${card.baseVerb}" title="View full conjugation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </button>
           <div class="card-verb">${card.verb}</div>
           <div class="card-hint">Tap to flip</div>
         </div>
         <div class="flashcard-back">
           <div class="card-number">${index + 1} / ${flashcardDeck.length}</div>
+          <button class="card-view-conjugation" data-verb="${card.baseVerb}" title="View full conjugation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </button>
           <div class="card-meaning">${card.meaning}</div>
           <div class="card-verb-small">${card.verb}</div>
         </div>
@@ -1162,6 +1188,16 @@ function renderFlashcards() {
     if (index === currentCardIndex) {
       const inner = cardElement.querySelector('.flashcard-inner');
       inner.addEventListener('click', flipCard);
+      
+      // Add conjugation view button listeners
+      const conjugationButtons = cardElement.querySelectorAll('.card-view-conjugation');
+      conjugationButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent card flip
+          const verb = btn.getAttribute('data-verb');
+          selectVerb(verb);
+        });
+      });
     }
     
     track.appendChild(cardElement);
@@ -1204,7 +1240,7 @@ function handleAnswer(isCorrect) {
     currentCardElement.classList.add('swipe-left');
     wrongCount++;
     // Track wrong answer for retry option
-    wrongAnswers.push(currentCard.verb);
+    wrongAnswers.push(currentCard.baseVerb);
   }
   
   // Move to next card after animation

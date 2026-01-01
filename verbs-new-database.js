@@ -339,7 +339,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αδιαφορώ": {
-    "meaning": "to be indifferent to,",
+    "meaning": "to be indifferent to",
     "voice": "Active",
     "page": 4,
     "Ενεστώτας (Present)": {
@@ -451,7 +451,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αδικώ": {
-    "meaning": "to be unfair,",
+    "meaning": "to be unfair",
     "voice": "Active",
     "page": 5,
     "Ενεστώτας (Present)": {
@@ -675,7 +675,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αιχμαλωτίζω": {
-    "meaning": "to capture,",
+    "meaning": "to capture",
     "voice": "Active",
     "page": 7,
     "Ενεστώτας (Present)": {
@@ -1347,7 +1347,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ανάβω": {
-    "meaning": "to light,",
+    "meaning": "to light",
     "voice": "Active",
     "page": 13,
     "Ενεστώτας (Present)": {
@@ -2016,7 +2016,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αναλαμβάνω": {
-    "meaning": "to undertake,",
+    "meaning": "to undertake",
     "voice": "Active",
     "page": 19,
     "Ενεστώτας (Present)": {
@@ -2800,7 +2800,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αναχωρώ": {
-    "meaning": "to depart,",
+    "meaning": "to depart",
     "voice": "Active",
     "page": 26,
     "Ενεστώτας (Present)": {
@@ -4368,7 +4368,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "απλώνω": {
-    "meaning": "to spread,",
+    "meaning": "to spread",
     "voice": "Active",
     "page": 40,
     "Ενεστώτας (Present)": {
@@ -4480,7 +4480,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αποδίδω": {
-    "meaning": "to attribute,",
+    "meaning": "to attribute",
     "voice": "Active",
     "page": 41,
     "Ενεστώτας (Present)": {
@@ -4703,16 +4703,17 @@ const verbs = {
     },
     "_hasAdditionalTenses": true
   },
-  "αποκάμνω. αποκάμνεις": {
-    "meaning": "to get tired,",
+  "αποκάμνω": {
+    "meaning": "to get tired",
     "voice": "Active",
     "page": 43,
     "Ενεστώτας (Present)": {
-      "εγώ": "αποκάμνω. αποκάμνεις",
-      "εσύ": "αποκάμνει",
-      "αυτός/ή/ό": "αποκάμνουμε",
-      "εμείς": "αποκάμνετε",
-      "εσείς": "αποκάμνουν"
+      "εγώ": "αποκάμνω",
+      "εσύ": "αποκάμνεις",
+      "αυτός/ή/ό": "αποκάμνει",
+      "εμείς": "αποκάμνουμε",
+      "εσείς": "αποκάμνετε",
+      "αυτοί/ές/ά": "αποκάμνουν"
     },
     "Μέλλοντας Στιγμιαίος (Simple Future)": {
       "εγώ": "θα αποκάμω",
@@ -4815,7 +4816,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αποκλείομαι": {
-    "meaning": "to be excluded,",
+    "meaning": "to be excluded",
     "voice": "Passive",
     "page": 44,
     "Ενεστώτας (Present)": {
@@ -4919,7 +4920,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αποκρούω": {
-    "meaning": "to repel,",
+    "meaning": "to repel",
     "voice": "Active",
     "page": 45,
     "Ενεστώτας (Present)": {
@@ -5143,7 +5144,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "απολυμαίνω": {
-    "meaning": "to disinfect,",
+    "meaning": "to disinfect",
     "voice": "Active",
     "page": 47,
     "Ενεστώτας (Present)": {
@@ -5255,7 +5256,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "απομονώνω": {
-    "meaning": "to isolate,",
+    "meaning": "to isolate",
     "voice": "Active",
     "page": 48,
     "Ενεστώτας (Present)": {
@@ -5367,7 +5368,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "απορώ": {
-    "meaning": "to wonder,",
+    "meaning": "to wonder",
     "voice": "Active",
     "page": 49,
     "Ενεστώτας (Present)": {
@@ -5815,7 +5816,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αρπάζω": {
-    "meaning": "to grab,",
+    "meaning": "to grab",
     "voice": "Active",
     "page": 53,
     "Ενεστώτας (Present)": {
@@ -6036,7 +6037,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αρχίζω": {
-    "meaning": "to begin,",
+    "meaning": "to begin",
     "voice": "Active",
     "page": 55,
     "Ενεστώτας (Present)": {
@@ -6148,7 +6149,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αστράφτω": {
-    "meaning": "to lighten,",
+    "meaning": "to lighten",
     "voice": "Active",
     "page": 56,
     "Ενεστώτας (Present)": {
@@ -6260,7 +6261,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ασχολούμαι": {
-    "meaning": "to engage in,",
+    "meaning": "to engage in",
     "voice": "Passive",
     "page": 57,
     "Ενεστώτας (Present)": {
@@ -6364,7 +6365,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αυξάνω": {
-    "meaning": "to increase,",
+    "meaning": "to increase",
     "voice": "Active",
     "page": 58,
     "Ενεστώτας (Present)": {
@@ -6476,7 +6477,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "αφήνω": {
-    "meaning": "to leave, to let,",
+    "meaning": "to leave, to let",
     "voice": "Active",
     "page": 59,
     "Ενεστώτας (Present)": {
@@ -6700,7 +6701,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "βάζω": {
-    "meaning": "to put, to lay,",
+    "meaning": "to put, to lay",
     "voice": "Active",
     "page": 61,
     "Ενεστώτας (Present)": {
@@ -6812,7 +6813,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "βαριέμαι": {
-    "meaning": "to be bored,",
+    "meaning": "to be bored",
     "voice": "Passive",
     "page": 62,
     "Ενεστώτας (Present)": {
@@ -7470,7 +7471,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "βγάζω": {
-    "meaning": "to take off,",
+    "meaning": "to take off",
     "voice": "Active",
     "page": 68,
     "Ενεστώτας (Present)": {
@@ -7582,7 +7583,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "βγαίνω": {
-    "meaning": "to go out,",
+    "meaning": "to go out",
     "voice": "Active",
     "page": 69,
     "Ενεστώτας (Present)": {
@@ -8907,7 +8908,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "βουτώ": {
-    "meaning": "to plunge, to dive, to dip,",
+    "meaning": "to plunge, to dive, to dip",
     "voice": "Active",
     "page": 81,
     "Ενεστώτας (Present)": {
@@ -9011,7 +9012,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "βρέχω": {
-    "meaning": "to rain, to wet,",
+    "meaning": "to rain, to wet",
     "voice": "Active",
     "page": 82,
     "Ενεστώτας (Present)": {
@@ -9123,7 +9124,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "βρίσκομαι": {
-    "meaning": "to be,",
+    "meaning": "to be",
     "voice": "Passive",
     "page": 83,
     "Ενεστώτας (Present)": {
@@ -10016,7 +10017,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "γερνώ": {
-    "meaning": "to get old,",
+    "meaning": "to get old",
     "voice": "Active",
     "page": 91,
     "Ενεστώτας (Present)": {
@@ -10237,7 +10238,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "γδέρνω": {
-    "meaning": "to skin, to flay,",
+    "meaning": "to skin, to flay",
     "voice": "Active",
     "page": 93,
     "Ενεστώτας (Present)": {
@@ -10790,7 +10791,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "γλεντώ": {
-    "meaning": "to amuse oneself,",
+    "meaning": "to amuse oneself",
     "voice": "Active",
     "page": 98,
     "Ενεστώτας (Present)": {
@@ -11014,7 +11015,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "γλυτώνω": {
-    "meaning": "to save, to rescue,",
+    "meaning": "to save, to rescue",
     "voice": "Active",
     "page": 100,
     "Ενεστώτας (Present)": {
@@ -11342,7 +11343,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "γυρνώ": {
-    "meaning": "to turn, to return,",
+    "meaning": "to turn, to return",
     "voice": "Active",
     "page": 104,
     "Ενεστώτας (Present)": {
@@ -12234,7 +12235,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "δείχνω": {
-    "meaning": "to show, to point to,",
+    "meaning": "to show, to point to",
     "voice": "Active",
     "page": 112,
     "Ενεστώτας (Present)": {
@@ -12679,7 +12680,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "δέρνομαι": {
-    "meaning": "to be beaten,",
+    "meaning": "to be beaten",
     "voice": "Passive",
     "page": 116,
     "Ενεστώτας (Present)": {
@@ -12899,7 +12900,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "δέχομαι": {
-    "meaning": "to accept,",
+    "meaning": "to accept",
     "voice": "Passive",
     "page": 118,
     "Ενεστώτας (Present)": {
@@ -13781,7 +13782,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "διαθέτω": {
-    "meaning": "to dispose,",
+    "meaning": "to dispose",
     "voice": "Active",
     "page": 126,
     "Ενεστώτας (Present)": {
@@ -14229,7 +14230,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "διαλέγω": {
-    "meaning": "to choose,",
+    "meaning": "to choose",
     "voice": "Active",
     "page": 130,
     "Ενεστώτας (Present)": {
@@ -14565,7 +14566,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "διασκεδάζω": {
-    "meaning": "to enjoy oneself,",
+    "meaning": "to enjoy oneself",
     "voice": "Active",
     "page": 133,
     "Ενεστώτας (Present)": {
@@ -14677,7 +14678,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "διατάζω": {
-    "meaning": "to order,",
+    "meaning": "to order",
     "voice": "Active",
     "page": 134,
     "Ενεστώτας (Present)": {
@@ -14789,7 +14790,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "διατηρώ": {
-    "meaning": "to maintain,",
+    "meaning": "to maintain",
     "voice": "Active",
     "page": 135,
     "Ενεστώτας (Present)": {
@@ -16133,7 +16134,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "δοκιμάζω": {
-    "meaning": "to try, to test,",
+    "meaning": "to try, to test",
     "voice": "Active",
     "page": 147,
     "Ενεστώτας (Present)": {
@@ -16468,7 +16469,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "δυστυχώ": {
-    "meaning": "to be unfortunate,",
+    "meaning": "to be unfortunate",
     "voice": "Active",
     "page": 150,
     "Ενεστώτας (Present)": {
@@ -16580,7 +16581,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "δυσφημούμαι": {
-    "meaning": "to be defamed,",
+    "meaning": "to be defamed",
     "voice": "Passive",
     "page": 151,
     "Ενεστώτας (Present)": {
@@ -16801,7 +16802,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "δωρίζω": {
-    "meaning": "to make a present,",
+    "meaning": "to make a present",
     "voice": "Active",
     "page": 153,
     "Ενεστώτας (Present)": {
@@ -17025,7 +17026,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εγγυώμαι": {
-    "meaning": "to guarantee,",
+    "meaning": "to guarantee",
     "voice": "Passive",
     "page": 155,
     "Ενεστώτας (Present)": {
@@ -17246,7 +17247,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εγκαταλείπομαι": {
-    "meaning": "to be abandoned,",
+    "meaning": "to be abandoned",
     "voice": "Passive",
     "page": 157,
     "Ενεστώτας (Present)": {
@@ -17752,7 +17753,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ειρωνεύομαι": {
-    "meaning": "to speak ironically,",
+    "meaning": "to speak ironically",
     "voice": "Passive",
     "page": 162,
     "Ενεστώτας (Present)": {
@@ -17861,7 +17862,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εισπράττω": {
-    "meaning": "to collect,",
+    "meaning": "to collect",
     "voice": "Active",
     "page": 163,
     "Ενεστώτας (Present)": {
@@ -17973,7 +17974,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εκθέτω": {
-    "meaning": "to display,",
+    "meaning": "to display",
     "voice": "Active",
     "page": 164,
     "Ενεστώτας (Present)": {
@@ -18197,7 +18198,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εκτιμώ": {
-    "meaning": "to appreciate,",
+    "meaning": "to appreciate",
     "voice": "Active",
     "page": 166,
     "Ενεστώτας (Present)": {
@@ -18308,7 +18309,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εκφράζομαι": {
-    "meaning": "to be expressed,",
+    "meaning": "to be expressed",
     "voice": "Passive",
     "page": 167,
     "Ενεστώτας (Present)": {
@@ -18529,7 +18530,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ελαττώνομαι": {
-    "meaning": "to be diminished,",
+    "meaning": "to be diminished",
     "voice": "Passive",
     "page": 169,
     "Ενεστώτας (Present)": {
@@ -18638,7 +18639,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ελαττώνω": {
-    "meaning": "to diminish,",
+    "meaning": "to diminish",
     "voice": "Active",
     "page": 170,
     "Ενεστώτας (Present)": {
@@ -18750,7 +18751,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ελέγχομαι": {
-    "meaning": "to be checked,",
+    "meaning": "to be checked",
     "voice": "Passive",
     "page": 171,
     "Ενεστώτας (Present)": {
@@ -18971,7 +18972,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ελευθερώνομαι": {
-    "meaning": "to be set free,",
+    "meaning": "to be set free",
     "voice": "Passive",
     "page": 173,
     "Ενεστώτας (Present)": {
@@ -19304,7 +19305,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εμπνέομαι": {
-    "meaning": "to be inspired,",
+    "meaning": "to be inspired",
     "voice": "Passive",
     "page": 176,
     "Ενεστώτας (Present)": {
@@ -19416,7 +19417,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εμποδίζω": {
-    "meaning": "to hinder,",
+    "meaning": "to hinder",
     "voice": "Active",
     "page": 177,
     "Ενεστώτας (Present)": {
@@ -19636,7 +19637,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εξάγω": {
-    "meaning": "to extract,",
+    "meaning": "to extract",
     "voice": "Active",
     "page": 179,
     "Ενεστώτας (Present)": {
@@ -19740,7 +19741,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εξαιρούμαι εξαιρείσαι": {
-    "meaning": "to be excluded,",
+    "meaning": "to be excluded",
     "voice": "Passive",
     "page": 180,
     "Ενεστώτας (Present)": {
@@ -19848,7 +19849,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εξαιρώ": {
-    "meaning": "to except,",
+    "meaning": "to except",
     "voice": "Active",
     "page": 181,
     "Ενεστώτας (Present)": {
@@ -19957,7 +19958,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εξακριβώνω": {
-    "meaning": "to ascertain,",
+    "meaning": "to ascertain",
     "voice": "Active",
     "page": 182,
     "Ενεστώτας (Present)": {
@@ -20730,7 +20731,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εξολοθρεύω": {
-    "meaning": "to exterminate,",
+    "meaning": "to exterminate",
     "voice": "Active",
     "page": 189,
     "Ενεστώτας (Present)": {
@@ -20954,7 +20955,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εξυψώνω": {
-    "meaning": "to elevate,",
+    "meaning": "to elevate",
     "voice": "Active",
     "page": 191,
     "Ενεστώτας (Present)": {
@@ -21738,7 +21739,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "επιμένω": {
-    "meaning": "to insist, to persist,",
+    "meaning": "to insist, to persist",
     "voice": "Active",
     "page": 198,
     "Ενεστώτας (Present)": {
@@ -22074,7 +22075,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "επιτίθεμαι": {
-    "meaning": "to attack, to charge,",
+    "meaning": "to attack, to charge",
     "voice": "Passive",
     "page": 201,
     "Ενεστώτας (Present)": {
@@ -22186,7 +22187,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ερεθίζω": {
-    "meaning": "to irritate,",
+    "meaning": "to irritate",
     "voice": "Active",
     "page": 202,
     "Ενεστώτας (Present)": {
@@ -22298,7 +22299,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ερειπώνω": {
-    "meaning": "to ruin,",
+    "meaning": "to ruin",
     "voice": "Active",
     "page": 203,
     "Ενεστώτας (Present)": {
@@ -22410,7 +22411,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ερευνώ": {
-    "meaning": "to search,",
+    "meaning": "to search",
     "voice": "Active",
     "page": 204,
     "Ενεστώτας (Present)": {
@@ -22522,7 +22523,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ερμηνεύω": {
-    "meaning": "to interpret,",
+    "meaning": "to interpret",
     "voice": "Active",
     "page": 205,
     "Ενεστώτας (Present)": {
@@ -22746,7 +22747,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ετοιμάζομαι": {
-    "meaning": "to prepare oneself,",
+    "meaning": "to prepare oneself",
     "voice": "Passive",
     "page": 207,
     "Ενεστώτας (Present)": {
@@ -22967,7 +22968,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ευχαριστιέμαι": {
-    "meaning": "to be pleased,",
+    "meaning": "to be pleased",
     "voice": "Passive",
     "page": 209,
     "Ενεστώτας (Present)": {
@@ -23412,7 +23413,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "εφευρίσκω": {
-    "meaning": "to invent,",
+    "meaning": "to invent",
     "voice": "Active",
     "page": 213,
     "Ενεστώτας (Present)": {
@@ -23808,7 +23809,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ζεσταίνω": {
-    "meaning": "to heat,",
+    "meaning": "to heat",
     "voice": "Active",
     "page": 217,
     "Ενεστώτας (Present)": {
@@ -23920,7 +23921,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ζηλεύω": {
-    "meaning": "to envy,",
+    "meaning": "to envy",
     "voice": "Active",
     "page": 218,
     "Ενεστώτας (Present)": {
@@ -24144,7 +24145,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ζητώ": {
-    "meaning": "to look for,",
+    "meaning": "to look for",
     "voice": "Active",
     "page": 220,
     "Ενεστώτας (Present)": {
@@ -24480,7 +24481,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ζω": {
-    "meaning": "to live,",
+    "meaning": "to live",
     "voice": "Active",
     "page": 223,
     "Ενεστώτας (Present)": {
@@ -24704,7 +24705,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ησυχάζω": {
-    "meaning": "to make quiet,",
+    "meaning": "to make quiet",
     "voice": "Active",
     "page": 225,
     "Ενεστώτας (Present)": {
@@ -25037,7 +25038,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "θαμπώνω": {
-    "meaning": "to dazzle,",
+    "meaning": "to dazzle",
     "voice": "Active",
     "page": 228,
     "Ενεστώτας (Present)": {
@@ -25149,7 +25150,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "θαρρώ": {
-    "meaning": "to think,",
+    "meaning": "to think",
     "voice": "Active",
     "page": 229,
     "Ενεστώτας (Present)": {
@@ -25369,7 +25370,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "θαυμάζω": {
-    "meaning": "to admire,",
+    "meaning": "to admire",
     "voice": "Active",
     "page": 231,
     "Ενεστώτας (Present)": {
@@ -25593,7 +25594,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "θερίζω": {
-    "meaning": "to harvest,",
+    "meaning": "to harvest",
     "voice": "Active",
     "page": 233,
     "Ενεστώτας (Present)": {
@@ -25705,7 +25706,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "θέτω": {
-    "meaning": "to lay, to put,",
+    "meaning": "to lay, to put",
     "voice": "Active",
     "page": 234,
     "Ενεστώτας (Present)": {
@@ -25817,7 +25818,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "θυμάμαι": {
-    "meaning": "to remember,",
+    "meaning": "to remember",
     "voice": "Passive",
     "page": 235,
     "Ενεστώτας (Present)": {
@@ -26030,7 +26031,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ιδρύω": {
-    "meaning": "to found,",
+    "meaning": "to found",
     "voice": "Active",
     "page": 237,
     "Ενεστώτας (Present)": {
@@ -26142,7 +26143,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ιδρώνω": {
-    "meaning": "to sweat,",
+    "meaning": "to sweat",
     "voice": "Active",
     "page": 238,
     "Ενεστώτας (Present)": {
@@ -26478,7 +26479,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ισχύω": {
-    "meaning": "to be valid,",
+    "meaning": "to be valid",
     "voice": "Active",
     "page": 241,
     "Ενεστώτας (Present)": {
@@ -26702,7 +26703,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κάθομαι": {
-    "meaning": "to sit,",
+    "meaning": "to sit",
     "voice": "Passive",
     "page": 243,
     "Ενεστώτας (Present)": {
@@ -26811,7 +26812,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "καθορίζω": {
-    "meaning": "to define,",
+    "meaning": "to define",
     "voice": "Active",
     "page": 244,
     "Ενεστώτας (Present)": {
@@ -27032,7 +27033,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "καθυστερώ": {
-    "meaning": "to delay,",
+    "meaning": "to delay",
     "voice": "Active",
     "page": 246,
     "Ενεστώτας (Present)": {
@@ -27476,7 +27477,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "καλώ": {
-    "meaning": "to call, to ask,",
+    "meaning": "to call, to ask",
     "voice": "Active",
     "page": 250,
     "Ενεστώτας (Present)": {
@@ -27588,7 +27589,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κανονίζω": {
-    "meaning": "to regulate,",
+    "meaning": "to regulate",
     "voice": "Active",
     "page": 251,
     "Ενεστώτας (Present)": {
@@ -28036,7 +28037,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "καταδικάζω": {
-    "meaning": "to condemn,",
+    "meaning": "to condemn",
     "voice": "Active",
     "page": 255,
     "Ενεστώτας (Present)": {
@@ -28148,7 +28149,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "καταθέτω": {
-    "meaning": "to deposit,",
+    "meaning": "to deposit",
     "voice": "Active",
     "page": 256,
     "Ενεστώτας (Present)": {
@@ -28260,7 +28261,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κατακτώ": {
-    "meaning": "to conquer,",
+    "meaning": "to conquer",
     "voice": "Active",
     "page": 257,
     "Ενεστώτας (Present)": {
@@ -28484,7 +28485,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "καταλαμβάνω": {
-    "meaning": "to take, to seize,",
+    "meaning": "to take, to seize",
     "voice": "Active",
     "page": 259,
     "Ενεστώτας (Present)": {
@@ -28817,7 +28818,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κατασκευάζω": {
-    "meaning": "to make,",
+    "meaning": "to make",
     "voice": "Active",
     "page": 262,
     "Ενεστώτας (Present)": {
@@ -29374,7 +29375,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κατηγορώ": {
-    "meaning": "to accuse,",
+    "meaning": "to accuse",
     "voice": "Active",
     "page": 267,
     "Ενεστώτας (Present)": {
@@ -29934,7 +29935,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κηρύττω": {
-    "meaning": "to herald,",
+    "meaning": "to herald",
     "voice": "Active",
     "page": 272,
     "Ενεστώτας (Present)": {
@@ -30046,7 +30047,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κινδυνεύω": {
-    "meaning": "to be in danger,",
+    "meaning": "to be in danger",
     "voice": "Active",
     "page": 273,
     "Ενεστώτας (Present)": {
@@ -30158,7 +30159,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κινηματογραφώ": {
-    "meaning": "to film,",
+    "meaning": "to film",
     "voice": "Active",
     "page": 274,
     "Ενεστώτας (Present)": {
@@ -30942,7 +30943,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κόβω": {
-    "meaning": "to cut,",
+    "meaning": "to cut",
     "voice": "Active",
     "page": 282,
     "Ενεστώτας (Present)": {
@@ -31722,7 +31723,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κουνώ": {
-    "meaning": "to move,",
+    "meaning": "to move",
     "voice": "Active",
     "page": 289,
     "Ενεστώτας (Present)": {
@@ -31942,7 +31943,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κουράζω": {
-    "meaning": "to tire,",
+    "meaning": "to tire",
     "voice": "Active",
     "page": 291,
     "Ενεστώτας (Present)": {
@@ -32054,7 +32055,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κουρδίζω": {
-    "meaning": "to wind up,",
+    "meaning": "to wind up",
     "voice": "Active",
     "page": 292,
     "Ενεστώτας (Present)": {
@@ -32166,7 +32167,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κρατώ": {
-    "meaning": "to hold,",
+    "meaning": "to hold",
     "voice": "Active",
     "page": 293,
     "Ενεστώτας (Present)": {
@@ -32278,7 +32279,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κρέμομαι": {
-    "meaning": "to hang,",
+    "meaning": "to hang",
     "voice": "Passive",
     "page": 294,
     "Ενεστώτας (Present)": {
@@ -32499,7 +32500,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κρίνω": {
-    "meaning": "to judge,",
+    "meaning": "to judge",
     "voice": "Active",
     "page": 296,
     "Ενεστώτας (Present)": {
@@ -32611,7 +32612,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κρυώνω": {
-    "meaning": "to be cold,",
+    "meaning": "to be cold",
     "voice": "Active",
     "page": 297,
     "Ενεστώτας (Present)": {
@@ -32723,7 +32724,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κυβερνώ": {
-    "meaning": "to govern,",
+    "meaning": "to govern",
     "voice": "Active",
     "page": 298,
     "Ενεστώτας (Present)": {
@@ -32947,7 +32948,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "κυνηγώ": {
-    "meaning": "to hunt, to pursue,",
+    "meaning": "to hunt, to pursue",
     "voice": "Active",
     "page": 300,
     "Ενεστώτας (Present)": {
@@ -33395,7 +33396,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "λείπω": {
-    "meaning": "to be absent,",
+    "meaning": "to be absent",
     "voice": "Active",
     "page": 304,
     "Ενεστώτας (Present)": {
@@ -33507,7 +33508,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "λειτουργώ": {
-    "meaning": "to function,",
+    "meaning": "to function",
     "voice": "Active",
     "page": 305,
     "Ενεστώτας (Present)": {
@@ -33952,7 +33953,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "λογαριάζω": {
-    "meaning": "to count,",
+    "meaning": "to count",
     "voice": "Active",
     "page": 309,
     "Ενεστώτας (Present)": {
@@ -34282,7 +34283,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "λούζω": {
-    "meaning": "to bathe,",
+    "meaning": "to bathe",
     "voice": "Active",
     "page": 312,
     "Ενεστώτας (Present)": {
@@ -34394,7 +34395,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "λυγίζω": {
-    "meaning": "to bend,",
+    "meaning": "to bend",
     "voice": "Active",
     "page": 313,
     "Ενεστώτας (Present)": {
@@ -34727,7 +34728,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "λυπώ": {
-    "meaning": "to sadden,",
+    "meaning": "to sadden",
     "voice": "Active",
     "page": 316,
     "Ενεστώτας (Present)": {
@@ -34950,7 +34951,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μαγεύω": {
-    "meaning": "to bewitch,",
+    "meaning": "to bewitch",
     "voice": "Active",
     "page": 318,
     "Ενεστώτας (Present)": {
@@ -35062,7 +35063,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μαζεύω": {
-    "meaning": "to gather,",
+    "meaning": "to gather",
     "voice": "Active",
     "page": 319,
     "Ενεστώτας (Present)": {
@@ -35286,7 +35287,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μακραίνω": {
-    "meaning": "to lengthen,",
+    "meaning": "to lengthen",
     "voice": "Active",
     "page": 321,
     "Ενεστώτας (Present)": {
@@ -35398,7 +35399,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μαλώνω": {
-    "meaning": "to quarrel,",
+    "meaning": "to quarrel",
     "voice": "Active",
     "page": 322,
     "Ενεστώτας (Present)": {
@@ -35510,7 +35511,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μαντεύω": {
-    "meaning": "to guess,",
+    "meaning": "to guess",
     "voice": "Active",
     "page": 323,
     "Ενεστώτας (Present)": {
@@ -35622,7 +35623,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μαρτυρώ": {
-    "meaning": "to bear witness to,",
+    "meaning": "to bear witness to",
     "voice": "Active",
     "page": 324,
     "Ενεστώτας (Present)": {
@@ -35846,7 +35847,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μαυρίζω": {
-    "meaning": "to blacken,",
+    "meaning": "to blacken",
     "voice": "Active",
     "page": 326,
     "Ενεστώτας (Present)": {
@@ -36070,7 +36071,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μεγαλώνω": {
-    "meaning": "to grow,",
+    "meaning": "to grow",
     "voice": "Active",
     "page": 328,
     "Ενεστώτας (Present)": {
@@ -36182,7 +36183,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μεθώ": {
-    "meaning": "to make drunk,",
+    "meaning": "to make drunk",
     "voice": "Active",
     "page": 329,
     "Ενεστώτας (Present)": {
@@ -36630,7 +36631,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μετακομίζω": {
-    "meaning": "to transport,",
+    "meaning": "to transport",
     "voice": "Active",
     "page": 333,
     "Ενεστώτας (Present)": {
@@ -36742,7 +36743,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μεταναστεύω": {
-    "meaning": "to immigrate,",
+    "meaning": "to immigrate",
     "voice": "Active",
     "page": 334,
     "Ενεστώτας (Present)": {
@@ -37078,7 +37079,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μετρώ": {
-    "meaning": "to count,",
+    "meaning": "to count",
     "voice": "Active",
     "page": 337,
     "Ενεστώτας (Present)": {
@@ -37413,7 +37414,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μπερδεύω": {
-    "meaning": "to tangle,",
+    "meaning": "to tangle",
     "voice": "Active",
     "page": 340,
     "Ενεστώτας (Present)": {
@@ -37525,7 +37526,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μοιάζω": {
-    "meaning": "to resemble,",
+    "meaning": "to resemble",
     "voice": "Active",
     "page": 341,
     "Ενεστώτας (Present)": {
@@ -37637,7 +37638,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μοιράζω": {
-    "meaning": "to divide,",
+    "meaning": "to divide",
     "voice": "Active",
     "page": 342,
     "Ενεστώτας (Present)": {
@@ -37749,7 +37750,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "μολύνω": {
-    "meaning": "to pollute,",
+    "meaning": "to pollute",
     "voice": "Active",
     "page": 343,
     "Ενεστώτας (Present)": {
@@ -38309,7 +38310,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "νικώ": {
-    "meaning": "to defeat,",
+    "meaning": "to defeat",
     "voice": "Active",
     "page": 348,
     "Ενεστώτας (Present)": {
@@ -38533,7 +38534,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "νοιώθω": {
-    "meaning": "to feel,",
+    "meaning": "to feel",
     "voice": "Active",
     "page": 350,
     "Ενεστώτας (Present)": {
@@ -38645,7 +38646,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "νομίζω": {
-    "meaning": "to think,",
+    "meaning": "to think",
     "voice": "Active",
     "page": 351,
     "Ενεστώτας (Present)": {
@@ -38757,7 +38758,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "νομιμοποιώ": {
-    "meaning": "to legalize,",
+    "meaning": "to legalize",
     "voice": "Active",
     "page": 352,
     "Ενεστώτας (Present)": {
@@ -38869,7 +38870,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ντρέπομαι": {
-    "meaning": "to be ashamed,",
+    "meaning": "to be ashamed",
     "voice": "Passive",
     "page": 353,
     "Ενεστώτας (Present)": {
@@ -39199,7 +39200,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "νυστάζω": {
-    "meaning": "to be sleepy,",
+    "meaning": "to be sleepy",
     "voice": "Active",
     "page": 356,
     "Ενεστώτας (Present)": {
@@ -39311,7 +39312,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξαπλώνω": {
-    "meaning": "to lie down,",
+    "meaning": "to lie down",
     "voice": "Active",
     "page": 357,
     "Ενεστώτας (Present)": {
@@ -39423,7 +39424,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξαφνιάζω": {
-    "meaning": "to take by surprise,",
+    "meaning": "to take by surprise",
     "voice": "Active",
     "page": 358,
     "Ενεστώτας (Present)": {
@@ -39759,7 +39760,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξέρω": {
-    "meaning": "to know,",
+    "meaning": "to know",
     "voice": "Active",
     "page": 361,
     "Ενεστώτας (Present)": {
@@ -39806,7 +39807,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξετυλίγω": {
-    "meaning": "to unroll,",
+    "meaning": "to unroll",
     "voice": "Active",
     "page": 362,
     "Ενεστώτας (Present)": {
@@ -40030,7 +40031,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξοδεύω": {
-    "meaning": "to spend,",
+    "meaning": "to spend",
     "voice": "Active",
     "page": 364,
     "Ενεστώτας (Present)": {
@@ -40142,7 +40143,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξύνω": {
-    "meaning": "to scratch,",
+    "meaning": "to scratch",
     "voice": "Active",
     "page": 365,
     "Ενεστώτας (Present)": {
@@ -40254,7 +40255,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξυπνώ": {
-    "meaning": "to wake up,",
+    "meaning": "to wake up",
     "voice": "Active",
     "page": 366,
     "Ενεστώτας (Present)": {
@@ -40366,7 +40367,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ξυρίζομαι": {
-    "meaning": "to shave,",
+    "meaning": "to shave",
     "voice": "Passive",
     "page": 367,
     "Ενεστώτας (Present)": {
@@ -40475,7 +40476,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "οδηγώ": {
-    "meaning": "to guide,",
+    "meaning": "to drive, to guide",
     "voice": "Active",
     "page": 368,
     "Ενεστώτας (Present)": {
@@ -40587,7 +40588,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ομολογώ": {
-    "meaning": "to confess,",
+    "meaning": "to confess",
     "voice": "Active",
     "page": 369,
     "Ενεστώτας (Present)": {
@@ -40808,7 +40809,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ονομάζω": {
-    "meaning": "to name,",
+    "meaning": "to name",
     "voice": "Active",
     "page": 371,
     "Ενεστώτας (Present)": {
@@ -41032,7 +41033,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ορίζω": {
-    "meaning": "to appoint,",
+    "meaning": "to appoint",
     "voice": "Active",
     "page": 373,
     "Ενεστώτας (Present)": {
@@ -41144,7 +41145,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ορμώ": {
-    "meaning": "to rush,",
+    "meaning": "to rush",
     "voice": "Active",
     "page": 374,
     "Ενεστώτας (Present)": {
@@ -41256,7 +41257,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "οφείλω": {
-    "meaning": "to owe,",
+    "meaning": "to owe",
     "voice": "Active",
     "page": 375,
     "Ενεστώτας (Present)": {
@@ -41592,7 +41593,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παγώνω": {
-    "meaning": "to freeze,",
+    "meaning": "to freeze",
     "voice": "Active",
     "page": 378,
     "Ενεστώτας (Present)": {
@@ -41928,7 +41929,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παίρνω": {
-    "meaning": "to take,",
+    "meaning": "to take",
     "voice": "Active",
     "page": 381,
     "Ενεστώτας (Present)": {
@@ -42040,7 +42041,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παλεύω": {
-    "meaning": "to wrestle,",
+    "meaning": "to wrestle",
     "voice": "Active",
     "page": 382,
     "Ενεστώτας (Present)": {
@@ -42152,7 +42153,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παντρεύομαι": {
-    "meaning": "to marry,",
+    "meaning": "to marry",
     "voice": "Passive",
     "page": 383,
     "Ενεστώτας (Present)": {
@@ -42258,7 +42259,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παραβαίνω": {
-    "meaning": "to violate,",
+    "meaning": "to violate",
     "voice": "Active",
     "page": 384,
     "Ενεστώτας (Present)": {
@@ -42370,7 +42371,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παραγγέλνω": {
-    "meaning": "to send word,",
+    "meaning": "to send word",
     "voice": "Active",
     "page": 385,
     "Ενεστώτας (Present)": {
@@ -42815,7 +42816,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παραμένω": {
-    "meaning": "to remain,",
+    "meaning": "to remain",
     "voice": "Active",
     "page": 389,
     "Ενεστώτας (Present)": {
@@ -42927,7 +42928,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παραπατώ": {
-    "meaning": "to stagger,",
+    "meaning": "to stagger",
     "voice": "Active",
     "page": 390,
     "Ενεστώτας (Present)": {
@@ -43038,7 +43039,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παρατείνω": {
-    "meaning": "to extend,",
+    "meaning": "to extend",
     "voice": "Active",
     "page": 391,
     "Ενεστώτας (Present)": {
@@ -43150,7 +43151,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παρατηρώ": {
-    "meaning": "to observe,",
+    "meaning": "to observe",
     "voice": "Active",
     "page": 392,
     "Ενεστώτας (Present)": {
@@ -43374,7 +43375,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παρελαύνω": {
-    "meaning": "to parade,",
+    "meaning": "to parade",
     "voice": "Active",
     "page": 394,
     "Ενεστώτας (Present)": {
@@ -43598,7 +43599,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παρουσιάζομαι": {
-    "meaning": "to appear,",
+    "meaning": "to appear",
     "voice": "Passive",
     "page": 396,
     "Ενεστώτας (Present)": {
@@ -43707,7 +43708,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παρουσιάζω": {
-    "meaning": "to present,",
+    "meaning": "to present",
     "voice": "Active",
     "page": 398,
     "Ενεστώτας (Present)": {
@@ -43931,7 +43932,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πατώ": {
-    "meaning": "to tread on,",
+    "meaning": "to tread on",
     "voice": "Active",
     "page": 400,
     "Ενεστώτας (Present)": {
@@ -44043,7 +44044,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "παύω": {
-    "meaning": "to cease, to stop,",
+    "meaning": "to cease, to stop",
     "voice": "Active",
     "page": 401,
     "Ενεστώτας (Present)": {
@@ -44379,7 +44380,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "περιλαμβάνω": {
-    "meaning": "to include,",
+    "meaning": "to include",
     "voice": "Active",
     "page": 404,
     "Ενεστώτας (Present)": {
@@ -44491,7 +44492,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "περιορίζω": {
-    "meaning": "to confine,",
+    "meaning": "to confine",
     "voice": "Active",
     "page": 405,
     "Ενεστώτας (Present)": {
@@ -44603,7 +44604,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "περιφρονώ": {
-    "meaning": "to disdain,",
+    "meaning": "to disdain",
     "voice": "Active",
     "page": 406,
     "Ενεστώτας (Present)": {
@@ -44939,7 +44940,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πετυχαίνω": {
-    "meaning": "to succeed,",
+    "meaning": "to succeed",
     "voice": "Active",
     "page": 409,
     "Ενεστώτας (Present)": {
@@ -45163,7 +45164,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πετώ": {
-    "meaning": "to fly,",
+    "meaning": "to fly",
     "voice": "Active",
     "page": 411,
     "Ενεστώτας (Present)": {
@@ -45498,7 +45499,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πηδώ": {
-    "meaning": "to jump,",
+    "meaning": "to jump",
     "voice": "Active",
     "page": 414,
     "Ενεστώτας (Present)": {
@@ -45610,7 +45611,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πιάνομαι": {
-    "meaning": "to hold on,",
+    "meaning": "to hold on",
     "voice": "Passive",
     "page": 415,
     "Ενεστώτας (Present)": {
@@ -45719,7 +45720,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πιάνω": {
-    "meaning": "to catch,",
+    "meaning": "to catch",
     "voice": "Active",
     "page": 416,
     "Ενεστώτας (Present)": {
@@ -45831,7 +45832,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πιέζω": {
-    "meaning": "to press,",
+    "meaning": "to press",
     "voice": "Active",
     "page": 417,
     "Ενεστώτας (Present)": {
@@ -46055,7 +46056,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πιστεύω": {
-    "meaning": "to believe,",
+    "meaning": "to believe",
     "voice": "Active",
     "page": 419,
     "Ενεστώτας (Present)": {
@@ -46612,7 +46613,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πληγώνω": {
-    "meaning": "to wound,",
+    "meaning": "to wound",
     "voice": "Active",
     "page": 424,
     "Ενεστώτας (Present)": {
@@ -46724,7 +46725,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πληροφορώ": {
-    "meaning": "to inform,",
+    "meaning": "to inform",
     "voice": "Active",
     "page": 425,
     "Ενεστώτας (Present)": {
@@ -47380,7 +47381,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "πονώ": {
-    "meaning": "to hurt,",
+    "meaning": "to hurt",
     "voice": "Active",
     "page": 433,
     "Ενεστώτας (Present)": {
@@ -47492,7 +47493,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ποτίζω": {
-    "meaning": "to water,",
+    "meaning": "to water",
     "voice": "Active",
     "page": 434,
     "Ενεστώτας (Present)": {
@@ -47828,7 +47829,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "προειδοποιώ": {
-    "meaning": "to warn,",
+    "meaning": "to warn",
     "voice": "Active",
     "page": 437,
     "Ενεστώτας (Present)": {
@@ -47940,7 +47941,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "προκαλώ": {
-    "meaning": "to provoke,",
+    "meaning": "to provoke",
     "voice": "Active",
     "page": 438,
     "Ενεστώτας (Present)": {
@@ -48604,7 +48605,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "προχωρώ": {
-    "meaning": "to proceed,",
+    "meaning": "to proceed",
     "voice": "Active",
     "page": 444,
     "Ενεστώτας (Present)": {
@@ -49052,7 +49053,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ρουφώ": {
-    "meaning": "to suck,",
+    "meaning": "to suck",
     "voice": "Active",
     "page": 449,
     "Ενεστώτας (Present)": {
@@ -49723,7 +49724,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σβήνω": {
-    "meaning": "to extinguish,",
+    "meaning": "to extinguish",
     "voice": "Active",
     "page": 455,
     "Ενεστώτας (Present)": {
@@ -50059,7 +50060,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σέρνω": {
-    "meaning": "to drag,",
+    "meaning": "to drag",
     "voice": "Active",
     "page": 458,
     "Ενεστώτας (Present)": {
@@ -50280,7 +50281,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σηκώνω": {
-    "meaning": "to raise,",
+    "meaning": "to raise",
     "voice": "Active",
     "page": 460,
     "Ενεστώτας (Present)": {
@@ -50392,7 +50393,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σημειώνω": {
-    "meaning": "to mark,",
+    "meaning": "to mark",
     "voice": "Active",
     "page": 461,
     "Ενεστώτας (Present)": {
@@ -50728,7 +50729,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σκάζω": {
-    "meaning": "to burst,",
+    "meaning": "to burst",
     "voice": "Active",
     "page": 464,
     "Ενεστώτας (Present)": {
@@ -50840,7 +50841,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σκεπάζω": {
-    "meaning": "to cover,",
+    "meaning": "to cover",
     "voice": "Active",
     "page": 465,
     "Ενεστώτας (Present)": {
@@ -52069,7 +52070,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σπεύδω": {
-    "meaning": "to hurry,",
+    "meaning": "to hurry",
     "voice": "Active",
     "page": 476,
     "Ενεστώτας (Present)": {
@@ -52293,7 +52294,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "στεγνώνω": {
-    "meaning": "to dry,",
+    "meaning": "to dry",
     "voice": "Active",
     "page": 478,
     "Ενεστώτας (Present)": {
@@ -52740,7 +52741,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "στερεώνω": {
-    "meaning": "to fasten,",
+    "meaning": "to fasten",
     "voice": "Active",
     "page": 482,
     "Ενεστώτας (Present)": {
@@ -53187,7 +53188,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "στολίζω": {
-    "meaning": "to adorn,",
+    "meaning": "to adorn",
     "voice": "Active",
     "page": 486,
     "Ενεστώτας (Present)": {
@@ -53299,7 +53300,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "στρίβω": {
-    "meaning": "to turn,",
+    "meaning": "to turn",
     "voice": "Active",
     "page": 487,
     "Ενεστώτας (Present)": {
@@ -53859,7 +53860,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συκοφαντώ": {
-    "meaning": "to slander,",
+    "meaning": "to slander",
     "voice": "Active",
     "page": 492,
     "Ενεστώτας (Present)": {
@@ -53971,7 +53972,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συλλαμβάνω": {
-    "meaning": "to arrest,",
+    "meaning": "to arrest",
     "voice": "Active",
     "page": 493,
     "Ενεστώτας (Present)": {
@@ -54749,7 +54750,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συναγωνίζομαι": {
-    "meaning": "to fight together (with another),",
+    "meaning": "to fight together (with another)",
     "voice": "Passive",
     "page": 500,
     "Ενεστώτας (Present)": {
@@ -54970,7 +54971,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συνδέομαι": {
-    "meaning": "to have a relation,",
+    "meaning": "to have a relation",
     "voice": "Passive",
     "page": 502,
     "Ενεστώτας (Present)": {
@@ -55306,7 +55307,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συνδυάζω": {
-    "meaning": "to combine,",
+    "meaning": "to combine",
     "voice": "Active",
     "page": 505,
     "Ενεστώτας (Present)": {
@@ -55522,7 +55523,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συνιστώ": {
-    "meaning": "to constitute,",
+    "meaning": "to constitute",
     "voice": "Active",
     "page": 507,
     "Ενεστώτας (Present)": {
@@ -55634,7 +55635,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συνοδεύω": {
-    "meaning": "to accompany,",
+    "meaning": "to accompany",
     "voice": "Active",
     "page": 508,
     "Ενεστώτας (Present)": {
@@ -55858,7 +55859,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συντονίζω": {
-    "meaning": "to tune together,",
+    "meaning": "to tune together",
     "voice": "Active",
     "page": 510,
     "Ενεστώτας (Present)": {
@@ -55970,7 +55971,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "συντρίβω": {
-    "meaning": "to crush,",
+    "meaning": "to crush",
     "voice": "Active",
     "page": 511,
     "Ενεστώτας (Present)": {
@@ -56859,7 +56860,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σχολιάζω": {
-    "meaning": "to comment,",
+    "meaning": "to comment",
     "voice": "Active",
     "page": 519,
     "Ενεστώτας (Present)": {
@@ -56971,7 +56972,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σώζομαι": {
-    "meaning": "to save oneself,",
+    "meaning": "to save oneself",
     "voice": "Passive",
     "page": 520,
     "Ενεστώτας (Present)": {
@@ -57080,7 +57081,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σώζω": {
-    "meaning": "to save,",
+    "meaning": "to save",
     "voice": "Active",
     "page": 521,
     "Ενεστώτας (Present)": {
@@ -57192,7 +57193,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "σωπαίνω": {
-    "meaning": "to remain silent,",
+    "meaning": "to remain silent",
     "voice": "Active",
     "page": 522,
     "Ενεστώτας (Present)": {
@@ -57640,7 +57641,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "τερματίζω": {
-    "meaning": "to terminate,",
+    "meaning": "to terminate",
     "voice": "Active",
     "page": 526,
     "Ενεστώτας (Present)": {
@@ -57864,7 +57865,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "τηλεφωνώ": {
-    "meaning": "to telephone,",
+    "meaning": "to telephone",
     "voice": "Active",
     "page": 528,
     "Ενεστώτας (Present)": {
@@ -58421,7 +58422,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "τρελαίνομαι": {
-    "meaning": "to go mad,",
+    "meaning": "to go mad",
     "voice": "Passive",
     "page": 533,
     "Ενεστώτας (Present)": {
@@ -58642,7 +58643,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "τρέμω": {
-    "meaning": "to tremble,",
+    "meaning": "to tremble",
     "voice": "Active",
     "page": 535,
     "Ενεστώτας (Present)": {
@@ -58689,7 +58690,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "τρέφω": {
-    "meaning": "to feed,",
+    "meaning": "to feed",
     "voice": "Active",
     "page": 536,
     "Ενεστώτας (Present)": {
@@ -59249,7 +59250,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "τσιμπώ": {
-    "meaning": "to pinch,",
+    "meaning": "to pinch",
     "voice": "Active",
     "page": 541,
     "Ενεστώτας (Present)": {
@@ -59473,7 +59474,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "τυπώνω": {
-    "meaning": "to print,",
+    "meaning": "to print",
     "voice": "Active",
     "page": 543,
     "Ενεστώτας (Present)": {
@@ -59918,7 +59919,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "υπερβαίνω": {
-    "meaning": "to surpass,",
+    "meaning": "to surpass",
     "voice": "Active",
     "page": 547,
     "Ενεστώτας (Present)": {
@@ -60030,7 +60031,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "υπερβάλλω": {
-    "meaning": "to exaggerate,",
+    "meaning": "to exaggerate",
     "voice": "Active",
     "page": 548,
     "Ενεστώτας (Present)": {
@@ -60366,7 +60367,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "υπομένω": {
-    "meaning": "to endure,",
+    "meaning": "to endure",
     "voice": "Active",
     "page": 551,
     "Ενεστώτας (Present)": {
@@ -60590,7 +60591,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "υπόσχομαι": {
-    "meaning": "to promise,",
+    "meaning": "to promise",
     "voice": "Passive",
     "page": 553,
     "Ενεστώτας (Present)": {
@@ -60814,7 +60815,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φαίνομαι": {
-    "meaning": "to seem,",
+    "meaning": "to seem",
     "voice": "Passive",
     "page": 555,
     "Ενεστώτας (Present)": {
@@ -60926,7 +60927,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φαντάζομαι": {
-    "meaning": "to imagine,",
+    "meaning": "to imagine",
     "voice": "Passive",
     "page": 556,
     "Ενεστώτας (Present)": {
@@ -61259,7 +61260,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φέρομαι": {
-    "meaning": "to behave,",
+    "meaning": "to behave",
     "voice": "Passive",
     "page": 559,
     "Ενεστώτας (Present)": {
@@ -61360,7 +61361,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φεύγω": {
-    "meaning": "to leave,",
+    "meaning": "to leave",
     "voice": "Active",
     "page": 560,
     "Ενεστώτας (Present)": {
@@ -61472,7 +61473,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φθείρω": {
-    "meaning": "to perish,",
+    "meaning": "to perish",
     "voice": "Active",
     "page": 561,
     "Ενεστώτας (Present)": {
@@ -61696,7 +61697,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φοβάμαι": {
-    "meaning": "to fear,",
+    "meaning": "to fear",
     "voice": "Passive",
     "page": 563,
     "Ενεστώτας (Present)": {
@@ -61805,7 +61806,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φονεύω": {
-    "meaning": "to kill,",
+    "meaning": "to kill",
     "voice": "Active",
     "page": 564,
     "Ενεστώτας (Present)": {
@@ -61917,7 +61918,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φορτώνω": {
-    "meaning": "to load,",
+    "meaning": "to load",
     "voice": "Active",
     "page": 565,
     "Ενεστώτας (Present)": {
@@ -62253,7 +62254,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φροντίζω": {
-    "meaning": "to care for,",
+    "meaning": "to care for",
     "voice": "Active",
     "page": 568,
     "Ενεστώτας (Present)": {
@@ -62365,7 +62366,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φταίω": {
-    "meaning": "to be at fault,",
+    "meaning": "to be at fault",
     "voice": "Active",
     "page": 569,
     "Ενεστώτας (Present)": {
@@ -62477,7 +62478,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φτάνω": {
-    "meaning": "to arrive,",
+    "meaning": "to arrive",
     "voice": "Active",
     "page": 570,
     "Ενεστώτας (Present)": {
@@ -62698,7 +62699,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φυλάγω": {
-    "meaning": "to guard,",
+    "meaning": "to guard",
     "voice": "Active",
     "page": 572,
     "Ενεστώτας (Present)": {
@@ -62919,7 +62920,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φυσώ": {
-    "meaning": "to blow,",
+    "meaning": "to blow",
     "voice": "Active",
     "page": 574,
     "Ενεστώτας (Present)": {
@@ -63143,7 +63144,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φωνάζω": {
-    "meaning": "to call,",
+    "meaning": "to call",
     "voice": "Active",
     "page": 576,
     "Ενεστώτας (Present)": {
@@ -63255,7 +63256,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "φωτογραφίζω": {
-    "meaning": "to photograph,",
+    "meaning": "to photograph",
     "voice": "Active",
     "page": 577,
     "Ενεστώτας (Present)": {
@@ -63367,7 +63368,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χαϊδεύω": {
-    "meaning": "to caress,",
+    "meaning": "to caress",
     "voice": "Active",
     "page": 578,
     "Ενεστώτας (Present)": {
@@ -63591,7 +63592,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χαίρομαι": {
-    "meaning": "to be glad,",
+    "meaning": "to be glad",
     "voice": "Passive",
     "page": 580,
     "Ενεστώτας (Present)": {
@@ -63703,7 +63704,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χαλώ": {
-    "meaning": "to spoil,",
+    "meaning": "to break, to spoil",
     "voice": "Active",
     "page": 581,
     "Ενεστώτας (Present)": {
@@ -64036,7 +64037,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χαράζω": {
-    "meaning": "to engrave,",
+    "meaning": "to engrave",
     "voice": "Active",
     "page": 584,
     "Ενεστώτας (Present)": {
@@ -64257,7 +64258,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χαρίζω": {
-    "meaning": "to make a present,",
+    "meaning": "to make a present",
     "voice": "Active",
     "page": 586,
     "Ενεστώτας (Present)": {
@@ -64593,7 +64594,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χορταίνω": {
-    "meaning": "to satisfy one's hunger,",
+    "meaning": "to satisfy one's hunger",
     "voice": "Active",
     "page": 589,
     "Ενεστώτας (Present)": {
@@ -64814,7 +64815,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χρωματίζω": {
-    "meaning": "to color,",
+    "meaning": "to color",
     "voice": "Active",
     "page": 591,
     "Ενεστώτας (Present)": {
@@ -64973,7 +64974,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χτυπώ": {
-    "meaning": "to beat,",
+    "meaning": "to beat",
     "voice": "Active",
     "page": 593,
     "Ενεστώτας (Present)": {
@@ -65085,7 +65086,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χωρίζω": {
-    "meaning": "to separate,",
+    "meaning": "to separate",
     "voice": "Active",
     "page": 594,
     "Ενεστώτας (Present)": {
@@ -65197,7 +65198,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "χωρώ": {
-    "meaning": "to contain,",
+    "meaning": "to contain",
     "voice": "Active",
     "page": 595,
     "Ενεστώτας (Present)": {
@@ -65866,7 +65867,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ψιθυρίζω": {
-    "meaning": "to whisper,",
+    "meaning": "to whisper",
     "voice": "Active",
     "page": 601,
     "Ενεστώτας (Present)": {
@@ -66202,7 +66203,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ωριμάζω": {
-    "meaning": "to ripen,",
+    "meaning": "to ripen",
     "voice": "Active",
     "page": 604,
     "Ενεστώτας (Present)": {
@@ -66314,7 +66315,7 @@ const verbs = {
     "_hasAdditionalTenses": true
   },
   "ωφελώ": {
-    "meaning": "to benefit,",
+    "meaning": "to benefit",
     "voice": "Active",
     "page": 605,
     "Ενεστώτας (Present)": {

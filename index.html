@@ -37,11 +37,11 @@
   <meta name="twitter:site" content="@conjugategreek" />
   
   <!-- Favicons for different browsers and devices -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="192x192" href="/Icon/app_icon.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/Icon/app_icon.png">
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="Icon/app_icon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="Icon/app_icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
   
   <!-- Apple Touch Icons for iOS -->
   <link rel="apple-touch-icon" href="Icon/app_icon.png">
@@ -110,6 +110,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Loading Indicator -->
+  <div id="loadingIndicator" class="loading-overlay">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Loading Greek verbs...</div>
+      <div class="loading-subtext">Preparing 600+ conjugations</div>
+    </div>
+  </div>
+
   <!-- Mobile menu toggle -->
   <button class="menu-toggle" id="menuToggle">
     <span></span>
@@ -155,6 +164,18 @@
     END OF TEMPORARILY HIDDEN SECTION
     ==========================================
     -->
+    
+    <!-- Suggestion Box Button -->
+    <div class="sidebar-footer">
+      <a href="mailto:conjugategreek@gmail.com?subject=Suggestion for ConjugateGreek.com" class="suggestion-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          <line x1="9" y1="10" x2="15" y2="10"></line>
+          <line x1="12" y1="7" x2="12" y2="13"></line>
+        </svg>
+        <span>Suggestion Box</span>
+      </a>
+    </div>
   </nav>
 
   <!-- Main Content -->
