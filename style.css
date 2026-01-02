@@ -82,17 +82,38 @@ body {
   padding: 1.5rem;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.sidebar-header:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.sidebar-header:active {
+  background: rgba(255,255,255,0.08);
 }
 
 .sidebar-header h2 {
   color: #fff;
   margin: 0;
   font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar-header:hover h2 {
+  color: #667eea;
 }
 
 .sidebar-header span {
   color: rgba(255,255,255,0.5);
   font-size: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar-header:hover span {
+  color: rgba(255,255,255,0.7);
 }
 
 .nav-links {
@@ -754,6 +775,104 @@ tr.imperative-third-person {
   font-style: italic;
 }
 
+/* Clear Button Section */
+.clear-section {
+  text-align: center;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.clear-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.clear-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.clear-button:active {
+  transform: translateY(0);
+}
+
+.clear-button svg {
+  flex-shrink: 0;
+}
+
+/* Irregular Verbs Section */
+.irregular-verbs-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+.irregular-verbs-title {
+  text-align: center;
+  color: #444;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+}
+
+.irregular-verbs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.irregular-verb-btn {
+  background: white;
+  color: #333;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.irregular-verb-btn:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.25);
+}
+
+.irregular-verb-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+/* Show clear button when result is shown */
+#result:not(:empty) ~ .irregular-verbs-section {
+  display: none;
+}
+
+/* Mobile adjustments for clear button */
+@media (max-width: 768px) {
+  .clear-button {
+    font-size: 0.9rem;
+    padding: 0.65rem 1.25rem;
+  }
+}
+
 /* Alphabetical List */
 .letter-section {
   margin-bottom: 2rem;
@@ -858,13 +977,8 @@ tr.imperative-third-person {
   background: #f8f9ff;
 }
 
-.essential-card.available {
+.essential-card {
   border-left: 3px solid #28a745;
-}
-
-.essential-card.unavailable {
-  border-left: 3px solid #dc3545;
-  opacity: 0.7;
 }
 
 .essential-card .rank {
@@ -889,34 +1003,6 @@ tr.imperative-third-person {
 .essential-card .verb-meaning {
   color: #888;
   font-size: 0.75rem;
-}
-
-.legend {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.85rem;
-  color: #666;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-}
-
-.legend-dot.available {
-  background: #28a745;
-}
-
-.legend-dot.unavailable {
-  background: #dc3545;
 }
 
 /* Mobile Responsive */
@@ -973,6 +1059,22 @@ tr.imperative-third-person {
   .keyboard-toggle,
   .greek-keyboard {
     display: none !important;
+  }
+  
+  /* Irregular verbs on mobile */
+  .irregular-verbs-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  
+  .irregular-verbs-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .irregular-verb-btn {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.85rem;
   }
 }
 

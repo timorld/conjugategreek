@@ -128,7 +128,7 @@
   
   <!-- Side Navigation -->
   <nav class="sidebar" id="sidebar">
-    <div class="sidebar-header">
+    <div class="sidebar-header" id="sidebarHeader">
       <h2>Conjugate Greek</h2>
       <span>Ελληνικά Ρήματα</span>
     </div>
@@ -255,7 +255,56 @@
           <div id="suggestions"></div>
         </div>
 
+        <!-- Clear Results Button (appears when results are shown) -->
+        <div id="clear-section" class="clear-section" style="display: none;">
+          <button id="clearButton" class="clear-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            Clear Search
+          </button>
+        </div>
+        
         <div id="result"></div>
+        
+        <!-- Irregular Verbs Section -->
+        <div id="irregular-verbs-section" class="irregular-verbs-section">
+          <h3 class="irregular-verbs-title">Common Verbs with Irregular Conjugations</h3>
+          <div class="irregular-verbs-grid">
+            <button class="irregular-verb-btn" onclick="selectVerb('μένω')">μένω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('στέλνω')">στέλνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('παραγγέλνω')">παραγγέλνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('πλένω')">πλένω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('φεύγω')">φεύγω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('παχαίνω')">παχαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('παίρνω')">παίρνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('φέρνω')">φέρνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('δίνω')">δίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('βάζω')">βάζω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('βγάζω')">βγάζω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('πέφτω')">πέφτω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('πεθαίνω')">πεθαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('παθαίνω')">παθαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('καταλαβαίνω')">καταλαβαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('μαθαίνω')">μαθαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('αρρωσταίνω')">αρρωσταίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('βγαίνω')">βγαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('μπαίνω')">μπαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('ανεβαίνω')">ανεβαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('κατεβαίνω')">κατεβαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('λέω')">λέω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('πίνω')">πίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('βλέπω')">βλέπω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('βρίσκω')">βρίσκω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('πηγαίνω')">πηγαίνω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('τρώω')">τρώω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('φταίω')">φταίω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('καίω')">καίω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('κλαίω')">κλαίω</button>
+            <button class="irregular-verb-btn" onclick="selectVerb('ακούω')">ακούω</button>
+          </div>
+        </div>
       </div>
     </div>
 

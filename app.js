@@ -317,8 +317,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup navigation
   setupNavigation();
   
+  // Setup sidebar header click
+  setupSidebarHeader();
+  
   // Setup search functionality
   setupSearch();
+  
+  // Setup clear button
+  setupClearButton();
   
   // Setup Greek keyboard
   setupGreekKeyboard();
@@ -339,6 +345,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 100); // Small delay to ensure everything is rendered
 });
+
+// Setup clear button
+function setupClearButton() {
+  const clearButton = document.getElementById('clearButton');
+  const clearSection = document.getElementById('clear-section');
+  
+  if (!clearButton) return;
+  
+  clearButton.addEventListener('click', () => {
+    // Clear input and results
+    input.value = '';
+    result.innerHTML = '';
+    suggestions.innerHTML = '';
+    
+    // Hide clear section
+    clearSection.style.display = 'none';
+    
+    // Focus on input
+    input.focus();
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// Setup sidebar header click
+function setupSidebarHeader() {
+  const sidebarHeader = document.getElementById('sidebarHeader');
+  
+  if (!sidebarHeader) return;
+  
+  sidebarHeader.addEventListener('click', () => {
+    // Navigate to search page
+    navigateTo('search');
+    
+    // Clear input and results
+    input.value = '';
+    result.innerHTML = '';
+    suggestions.innerHTML = '';
+    
+    // Hide clear section
+    const clearSection = document.getElementById('clear-section');
+    if (clearSection) {
+      clearSection.style.display = 'none';
+    }
+    
+    // Close mobile menu
+    sidebar.classList.remove('open');
+    menuToggle.classList.remove('open');
+    
+    // Hide back button
+    hideBackButton();
+    
+    // Focus on input
+    input.focus();
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // Setup navigation
 function setupNavigation() {
@@ -395,6 +461,12 @@ function goBack() {
   input.value = '';
   result.innerHTML = '';
   suggestions.innerHTML = '';
+  
+  // Hide clear section
+  const clearSection = document.getElementById('clear-section');
+  if (clearSection) {
+    clearSection.style.display = 'none';
+  }
   
   // Restore scroll position
   setTimeout(() => {
@@ -540,6 +612,11 @@ function setupSearch() {
     
     if (query.length === 0) {
       result.innerHTML = "";
+      // Hide clear button when input is empty
+      const clearSection = document.getElementById('clear-section');
+      if (clearSection) {
+        clearSection.style.display = 'none';
+      }
       return;
     }
     
@@ -724,6 +801,12 @@ const specialForms = [
 
 function showVerb(verb) {
   result.innerHTML = "";
+  
+  // Show clear button
+  const clearSection = document.getElementById('clear-section');
+  if (clearSection) {
+    clearSection.style.display = 'block';
+  }
 
   if (!verbs[verb]) {
     result.innerHTML = `<p class="not-found">Verb "${verb}" not found</p>`;
@@ -972,16 +1055,6 @@ function renderEssentialList() {
       <h3>Master These First!</h3>
       <p>These 100 verbs cover the majority of everyday Greek conversation</p>
     </div>
-    <div class="legend">
-      <div class="legend-item">
-        <div class="legend-dot available"></div>
-        <span>Available (click to conjugate)</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot unavailable"></div>
-        <span>Coming soon</span>
-      </div>
-    </div>
   `;
   
   // Group into categories
@@ -999,11 +1072,9 @@ function renderEssentialList() {
       <div class="essential-grid">`;
     
     categories[category].forEach((item, idx) => {
-      const available = verbs[item.verb] !== undefined;
       const globalIdx = essentialVerbs.indexOf(item) + 1;
       
-      html += `<div class="essential-card ${available ? 'available' : 'unavailable'}" 
-                   ${available ? `onclick="selectVerb('${item.verb}')"` : ''}>
+      html += `<div class="essential-card" onclick="selectVerb('${item.verb}')">
         <span class="rank">${globalIdx}</span>
         <div class="verb-info">
           <div class="verb-name">${getVerbDisplayName(item.verb)}</div>
@@ -1026,6 +1097,16 @@ function selectVerb(verb) {
       page: currentPage,
       scrollPosition: window.scrollY
     });
+  } else {
+    // We're already on search page, but save the "clean" state if we're not showing results
+    // This allows back button to work when clicking verbs from the irregular verbs list
+    if (result.innerHTML === '' || !result.innerHTML) {
+      navigationHistory.push({
+        page: 'search',
+        scrollPosition: window.scrollY,
+        cleanState: true
+      });
+    }
   }
   
   navigateTo('search', false);
