@@ -8,7 +8,7 @@ let englishToGreekMap = {}; // Reverse lookup: English word -> Greek verbs
 const alternativeVerbForms = {
   "αγαπώ": "αγαπάω",
   "απαντώ": "απαντάω",
-  "αποχτώ": "αποχτάω",
+  "αποκτώ": "αποκτάω",
   "βαστώ": "βαστάω",
   "βογκώ": "βογκάω",
   "βοηθώ": "βοηθάω",
