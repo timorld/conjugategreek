@@ -446,6 +446,12 @@ function navigateTo(page, saveHistory = true) {
   if (page === 'essential') renderEssentialList();
   if (page === 'flashcards') initFlashcards();
   
+  // Show/hide alphabet index based on page
+  const alphabetIndex = document.getElementById('alphabet-index');
+  if (alphabetIndex) {
+    alphabetIndex.style.display = page === 'alphabetical' ? 'flex' : 'none';
+  }
+  
   // Hide back button when navigating via menu
   if (saveHistory) {
     hideBackButton();
@@ -1029,7 +1035,7 @@ function renderAlphabeticalList() {
   // Render
   let html = '';
   for (const letter in groups) {
-    html += `<div class="letter-section">
+    html += `<div class="letter-section" id="letter-${letter}">
       <div class="letter-header">${letter}</div>
       <div class="verb-grid">`;
     
@@ -1044,6 +1050,57 @@ function renderAlphabeticalList() {
   }
   
   container.innerHTML = html;
+  
+  // Create alphabet index for mobile navigation
+  createAlphabetIndex(Object.keys(groups));
+}
+
+// Create vertical alphabet index for mobile
+function createAlphabetIndex(letters) {
+  // Remove existing index if any
+  const existing = document.getElementById('alphabet-index');
+  if (existing) existing.remove();
+  
+  // Create index container
+  const index = document.createElement('div');
+  index.id = 'alphabet-index';
+  index.className = 'alphabet-index';
+  
+  // Add letter buttons
+  letters.forEach(letter => {
+    const btn = document.createElement('div');
+    btn.className = 'alphabet-index-letter';
+    btn.textContent = letter;
+    btn.onclick = () => scrollToLetter(letter);
+    index.appendChild(btn);
+  });
+  
+  // Add to alphabetical page
+  const alphabeticalPage = document.getElementById('page-alphabetical');
+  if (alphabeticalPage) {
+    alphabeticalPage.appendChild(index);
+    // Show index if we're currently on the alphabetical page
+    if (currentPage === 'alphabetical') {
+      index.style.display = 'flex';
+    }
+  }
+}
+
+// Scroll to specific letter section
+function scrollToLetter(letter) {
+  const section = document.getElementById(`letter-${letter}`);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Visual feedback
+    const indexLetters = document.querySelectorAll('.alphabet-index-letter');
+    indexLetters.forEach(el => {
+      if (el.textContent === letter) {
+        el.classList.add('active');
+        setTimeout(() => el.classList.remove('active'), 300);
+      }
+    });
+  }
 }
 
 // Essential Verbs Page

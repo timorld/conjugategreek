@@ -892,6 +892,7 @@ tr.imperative-third-person {
 /* Alphabetical List */
 .letter-section {
   margin-bottom: 2rem;
+  scroll-margin-top: 5rem;
 }
 
 .letter-header {
@@ -935,6 +936,55 @@ tr.imperative-third-person {
   color: #888;
   font-size: 0.85rem;
   font-style: italic;
+}
+
+/* Alphabet Index for Mobile Navigation */
+.alphabet-index {
+  display: none;
+  position: fixed;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0.25rem 0.15rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  flex-direction: column;
+}
+
+.alphabet-index::-webkit-scrollbar {
+  display: none;
+}
+
+.alphabet-index-letter {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #667eea;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  border-radius: 4px;
+  user-select: none;
+  min-width: 20px;
+}
+
+.alphabet-index-letter:hover {
+  background: #667eea;
+  color: white;
+  transform: scale(1.15);
+}
+
+.alphabet-index-letter:active,
+.alphabet-index-letter.active {
+  background: #764ba2;
+  color: white;
+  transform: scale(1.25);
 }
 
 /* Essential Verbs */
@@ -1067,6 +1117,7 @@ tr.imperative-third-person {
     font-size: 0.9rem;
   }
   
+  
   .sidebar-footer {
     bottom: 60px;
   }
@@ -1108,6 +1159,13 @@ tr.imperative-third-person {
 
 .overlay.active {
   display: block;
+}
+
+/* Hide alphabet index on desktop */
+@media (min-width: 769px) {
+  .alphabet-index {
+    display: none !important;
+  }
 }
 
 /* ========== FLASHCARDS ========== */
